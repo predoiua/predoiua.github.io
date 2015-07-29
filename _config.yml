@@ -2,7 +2,7 @@
 title: Business Inteligence aka BI
 email: predoiua.vv10@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-    How to BI and others IT.
+    How to BI and IT.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://predoiua.github.io" # the base hostname & protocol for your site
 github_username:  predoiua
