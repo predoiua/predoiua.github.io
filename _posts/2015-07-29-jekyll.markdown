@@ -13,10 +13,10 @@ jekyll serve -port 8080
 
 * Ruby
 
-Requirement ruby (least 1.9) + ruby devel.
+Requirement ruby (least 1.9) + ruby dev.
 
-Very userful **rvm** for installing latest Ruby.
+Very useful **rvm** for installing latest Ruby.
 
-Great tutorial [Install Ruby on Centos 6](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-on-centos-6-with-rvm)
+Great tutorial [Install Ruby on CentOS 6](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-on-centos-6-with-rvm)
 
 [jekyll]:      http://jekyllrb.com
