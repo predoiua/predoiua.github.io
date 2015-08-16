@@ -1,0 +1,41 @@
+---
+layout: post
+title:  "Routine Daily/weekly/monthly"
+date:   2015-08-01 13:00:00
+categories: linux training
+---
+# Linux
+
+docker run -it --rm ubuntu:latest /bin/bash
+
+script
+
+file `which diff`
+tput colors
+echo $TERM
+export TERM=xterm-256color
+exit #script
+cat typescript
+
+tail /etc/passwd
+useradd -D #lowlevel
+useradd bi
+#adduser bi
+mkdir -p /home/bi
+chown bi:bi /home/bi
+passwd bi
+groupadd mkt
+usermod -a -G mkt bi
+usermod -g mkt bi
+usermod -g bi bi
+id bi
+su - bi
+
+touch s.sh
+chmod 0766 s.sh
+
+exit
+
+usermod --shell /bin/false bi
+
+userdel -r bi
