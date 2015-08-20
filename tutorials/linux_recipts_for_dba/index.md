@@ -85,4 +85,13 @@ echo $SHELL = echo $0 = ps
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
+# typical entries
+# No core files by default
+ulimit -S -c 0 > /dev/null 2>&1
+# Set OS variables
+USER="`id -un`"
+LOGNAME=$USER
+MAIL="/var/spool/mail/$USER"
+HOSTNAME=`/bin/hostname`
 ~~~
+
