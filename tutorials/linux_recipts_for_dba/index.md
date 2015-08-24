@@ -95,3 +95,12 @@ MAIL="/var/spool/mail/$USER"
 HOSTNAME=`/bin/hostname`
 ~~~
 
+##2.6 Command prompt
+echo $PS1
+
+##2.5 Command schortcut
+
+- alias
+
+- shell function
+

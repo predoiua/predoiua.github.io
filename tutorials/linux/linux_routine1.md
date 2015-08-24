@@ -1,6 +1,5 @@
 ---
 layout: post
-title:  "Routine Daily/weekly/monthly"
 date:   2015-08-01 13:00:00
 categories: linux training
 ---
