@@ -1,12 +1,12 @@
 *automatically start Oracle 10g on CentOS 5 ?
 A: 
-1. /etc/oratab. At the end should be Y
+1. vi /etc/oratab. At the end should be Y
 2. vi $ORACLE_HOME/bin/dbstart
 line 78 set ORACLE_HOME_LISTNER=$ORALCE_HOME
 3.
 > /etc/rc.d/init.d/oracle
-echo '
-#!/bin/bash
+
+echo '#!/bin/bash
 # chkconfig: 345 99 10
 # description: Oracle auto start-stop script.
 case "$1" in
@@ -35,3 +35,13 @@ chmod 750 /etc/rc.d/init.d/oracle
 #chkconfig --add oracle
 chkconfig --level 2345 oracle on
 chkconfig --list oracle
+
+
+* import data with DB pump but change data file location ?
+
+...
+remap_datafile=\"/tmp/test01.dbf\":\"/home/orale/11g/test01.dbf\"
+...
+http://www.dba-oracle.com/t_rman_173_impdp_remap.htm
+http://international-dba.blogspot.ro/2014/05/impdp-remapdatafile-parameter.html
+
