@@ -129,14 +129,14 @@ iSQL*Plus DBA URL:http://localhost.localdomain:5560/isqlplus/dba
 #####
 
 ###### as oracle #########
-echo "
+echo '
 export PATH=$PATH:/usr/local/bin
 export ORACLE_SID=orcl
 export ORAENV_ASK=NO
 export NLS_LANG="AMERICAN_AMERICA.WE8MSWIN1252"
 
 . oraenv
-">> ~/.bashrc
+'>> ~/.bashrc
 
 . ~/.bashrc
 

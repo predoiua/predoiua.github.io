@@ -7,7 +7,7 @@ Use data pump to migrate data from 10g to 11g.
 =========== check users to export ====
 select username from all_users;
 =========== check data file location ======
-SELECT  FILE_NAME FROM DBA_DATA_FILES
+SELECT  FILE_NAME FROM DBA_DATA_FILES;
 =========== check tablespaces ======
 select TABLESPACE_NAME from dba_tablespaces;
 =========== tablespace size =========================
@@ -35,7 +35,9 @@ where df.tablespace_name = tu.tablespace_name ;
 
 Start Oracle 10g
 1. Configure data pump
+#as oracle in bash
 mkdir -p /home/oracle/data_pump
+#as system in sqlplus
 CREATE or REPLACE DIRECTORY data_pump_dir AS '/home/oracle/data_pump';
 
 2. Create export
@@ -48,12 +50,11 @@ expdp system/manager \
     directory=data_pump_dir  \
     dumpfile=tablespace.dmp 
 
-    include=tablespace :"IN ('TBL_WAVE60_DATA', 'TBL_WAVE60_INDX')" \
 
 # test previous exp
 impdp system/manager \
     full=y dumpfile=tablespace.dmp sqlfile=tablespace.sql \
-    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_wave60_data_02.dbf:/home/oracle/oradata/11g/kds/TBL_wave60_data_01.dbf
+    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_02.dbf:/home/oracle/oradata/11g/kds/TBL_01.dbf
 
 
 expdp system/manager \
@@ -67,16 +68,18 @@ Start Oracle 11g
 CREATE or REPLACE DIRECTORY data_pump_dir AS '/home/oracle/data_pump';
 mkdir -p /home/oracle/oradata/11g/kds
 
+DROP TABLESPACE TBL_WAVE60_DATA INCLUDING CONTENTS AND DATAFILES;
+
 impdp system/manager \
     full=y dumpfile=tablespace.dmp \
-    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_wave60_data_02.dbf:/home/oracle/oradata/11g/kds/TBL_wave60_data_01.dbf
+    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_02.dbf:/home/oracle/oradata/11g/kds/TBL_01.dbf
 
 impdp system/manager \
     schemas=WAVE60 \
     directory=data_pump_dir  \
     dumpfile=10g.dmp \
     REMAP_TABLESPACE=TBL_WAVE60_DATA:TBL_WAVE60_DATA \
-    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_wave60_data_02.dbf:/home/oracle/oradata/11g/kds/TBL_wave60_data_01.dbf
+    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_02.dbf:/home/oracle/oradata/11g/kds/TBL_01.dbf
 
 
 
