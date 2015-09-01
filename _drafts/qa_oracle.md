@@ -1,4 +1,5 @@
-*automatically start Oracle 10g on CentOS 5 ?
+*
+Q: How to automatically start Oracle 10g on CentOS 5 ?
 A: 
 1. vi /etc/oratab. At the end should be Y
 2. vi $ORACLE_HOME/bin/dbstart
@@ -37,11 +38,12 @@ chkconfig --level 2345 oracle on
 chkconfig --list oracle
 
 
-* import data with DB pump but change data file location ?
+* How to import data with DB pump but change data file location ?
 
+Tablespaces must be moved in a distinct step.
+I was unable to create both users and tablespaces in same step.
 ...
 remap_datafile=\"/tmp/test01.dbf\":\"/home/orale/11g/test01.dbf\"
 ...
 http://www.dba-oracle.com/t_rman_173_impdp_remap.htm
-http://international-dba.blogspot.ro/2014/05/impdp-remapdatafile-parameter.html
 
