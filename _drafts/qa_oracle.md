@@ -43,7 +43,14 @@ chkconfig --list oracle
 Tablespaces must be moved in a distinct step.
 I was unable to create both users and tablespaces in same step.
 ...
-remap_datafile=\"/tmp/test01.dbf\":\"/home/orale/11g/test01.dbf\"
+remap_datafile=\"/tmp/test01.dbf\":\"/home/oracle/oradata_11g/test01.dbf\"
 ...
 http://www.dba-oracle.com/t_rman_173_impdp_remap.htm
 
+
+* How to check if an user is connected in Oracle ?
+
+select s.sid, s.serial#, s.status, p.spid 
+from v$session s, v$process p 
+where s.username = 'myuser' 
+and p.addr (+) = s.paddr;
