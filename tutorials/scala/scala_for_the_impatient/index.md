@@ -21,13 +21,13 @@ categories: scala
 2.to(10)
 2 to 10
 2.toString // instead of cast2.to(10)
-3+4 // same as 3.(4)
+3+4 // same as 3+(4)
 ~~~
 
 ##2. Control Structures and Functions A1
 
 - Scala if statement ~= c ?: expression
-- Type of 
+- Type of
 
 ~~~ scala
 if ( x>0 ) 1 else "Text"
@@ -41,6 +41,7 @@ is Any
 
 ~~~ scala
 for ( i <- 1 to 10) println(i)
+for ( i <- 20 to 10 by -1) println(i)
 for ( i <- 1 to 3; j <- 1 to 3 if i != j ) print ( (10*i + j) + " " )
 ~~~
 - function 
@@ -76,4 +77,76 @@ def proc(s:String) { println("hei")} // No = before {
 // same as
 def proc1(s:String):Unit = { println("hei")}
 ~~~
+- Lazy
+lazy val = evaluated at first usage
+val = evaluated as soon as defined
+def = evaluated at each usage
 
+~~~ scala
+lazy val words = io.Source.fromFile("/usr/share/dict/words").mkString
+~~~
+- Exception
+
+try { ... } catch { ... } finally { ... }
+
+##3. Array A1
+
+Key points:
+- Array for fixed size, ArrayBuffer for variable size
+- no "new" when supply initial values
+- () to access elements. Similar with [] in C, Java
+- for (elem <- array)
+- for (elem <- array if ...) yield .. to transform existing array in a new one
+- scala Array = java Array, scala ArrayBuffer = collection.JavaConversions
+
+- Fixed size Array
+
+~~~ scala
+var arrgs=new Array[String](3) // will be an Array initialized to nulls, Int initialized to 0
+arrgs(1) // null
+var a = Array(1,2,3)
+for(i<-a) println(i);
+~~~
+
+- Variable size Array = Array Buffer
+
+~~~ scala
+import collection.mutable.ArrayBuffer
+var b = new ArrayBuffer[Int]()
+b += 10 // add new element at the end
+b += ( 1,2,3)
+b ++= Array(1,2.3)
+for(elem <- b) println( elem );
+for(i <- 0 unil b.size ) println (b(i)); //!!until =  0 until 10 = 0 to 9
+~~~
+
+- Transforming array
+
+~~~ scala
+var b = Array(2,3,5,6,11)
+val result = for(elem <- b if( elem%2 ==0) ) yield elem * 2// same as ..
+b.filter( _ % 2 == 0 ).map( 2 * _ ) // same as ..
+b filter { _ % 2 == 0 } map { 2 * _ }
+~~~
+
+- common algorithms
+
+~~~ scala
+Array(1,2,3).sum
+(1 to 3).max
+b.sortWith( _ < _ )
+b.mkString(" and ")
+b.mkString("<",",",">")
+~~~
+
+##4. Maps and Tuples A1
+
+Key points:
+- need to select mutable or immutable maps
+- default is immutable hash map
+
+- constructing a map
+
+~~~ scala
+var scores = Map("alice"->10,"bob"->9)
+~~~
