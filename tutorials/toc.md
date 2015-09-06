@@ -9,3 +9,6 @@
 ###Scala
 - [General](../tutorials/scala/)
 - [Scala for the impatient](../tutorials/scala/scala_for_the_impatient/)
+
+###Algorithms
+- [Cracking](../tutorials/algorithm/cracking_the_coding_interview/)
