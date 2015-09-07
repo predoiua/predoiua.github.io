@@ -7,7 +7,6 @@ categories: linux
 {:toc}
 
 # Getting started
-===================
 
 ~~~ bash
 script_name=`basename $0 .sh`
