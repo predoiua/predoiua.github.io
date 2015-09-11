@@ -7,7 +7,6 @@ categories: linux
 {:toc}
 
 # Getting started
-===================
 
 ##1.2 Connect to server
 -l = user name
@@ -97,8 +96,11 @@ HOSTNAME=`/bin/hostname`
 ~~~
 
 ##2.6 Command prompt
+
+~~~ bash
 echo $PS1
 PS1='[\u@\h:${ORACLE_SID}]$ '
+~~~~
 
 ##2.7 Command schortcut
 
@@ -213,3 +215,71 @@ pinky # light version of finger
 last | less
 lastb
 ~~~
+
+##3.5 Limiting the number of user processes
+
+~~~ bash
+useradd test_user
+vi /etc/security/limits.conf
+..
+test_user soft nproc 100
+test_user hard nproc 2000
+...
+#test it. fork bomb
+: () { :|:& };:
+~~~~
+
+##3.6 Viewing how long the server has been running
+
+~~~ bash
+uptime
+# uptime is also the first line of
+w
+~~~
+
+##3.7 How long a process has been running
+
+~~~ bash
+## check line STIME ( start time ) and TIME (cpu time)
+ps -ef
+~~~
+
+##3.8 Dispaly your username
+
+~~~ bash
+id
+who am i
+~~~
+
+##3.9 Control passwd
+
+~~~bash
+passwd oracle
+change -M 60 oracle #passwd will be valid for 60 days
+change -l oracle #verify 
+~~~
+
+##3.11 sudo
+
+~~~bash
+echo "oracle ALL=(ALL) ALL" >> /etc/sudoers
+#or
+echo "oracle ALL=/usr/sbin/groupadd,/usr/sbin/useradd" >> /etc/sudoers
+sudo -l #check what can be run as root
+~~~
+
+#3.12 user/group
+
+~~~ bash
+groupadd oinstall
+groupadd dba
+groupadd test
+cat /etc/group
+groupdel test
+useradd -g ointall -G dba oracle
+id oracle
+usrdel oracle
+~~~
+
+#4 Creating and editing files
+
