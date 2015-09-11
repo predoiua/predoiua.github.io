@@ -149,4 +149,20 @@ Key points:
 
 ~~~ scala
 var scores = Map("alice"->10,"bob"->9)
+// Muttable
+val scores = scala.collection.mutable.Map("alice" -> 10, "bob" -> 3, "bindy" -> 8)
+scores("alice") = 22
+for ((k,v)<-scores) println( k + ":" + v)
+//Java interoperability
+import scala.collection.JavaConversions.mapAsScalaMap
+val scores: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]
 ~~~
+
+- tuples
+~~~ scala
+val t = (1, 3.14, "Fred") // type Tuple3[Int, Double, java.lang.String
+t._2
+~~~
+
+##5. Classes A1
+

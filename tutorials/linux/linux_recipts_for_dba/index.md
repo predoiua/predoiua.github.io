@@ -207,7 +207,7 @@ tty
 pinky # light version of finger
 ~~~
 
-##3.4 Listing last logon 
+##3.4 Listing last logon
 
 ~~~ bash
 last | less
