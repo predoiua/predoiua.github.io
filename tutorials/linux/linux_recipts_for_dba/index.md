@@ -6,7 +6,7 @@ categories: linux
 * will be replace by toc
 {:toc}
 
-# Getting started
+#Getting started
 
 ##1.2 Connect to server
 -l = user name
@@ -282,4 +282,102 @@ usrdel oracle
 ~~~
 
 #4 Creating and editing files
+
+##4.1 Creating a file
+
+|Cmd| Description|
+|----------|-----|
+|vi|Starts editing session in memory.|
+|vi <file> | Starts session and opens the specified file. |
+|vi <file>*|Open multi files. Navigate :n|
+|view <file>|Read only open|
+|vi -R <file>|Read only open|
+|vi -r <file>|recover file|
+|vi +n <file>|Opens file at specified line number n.|
+|vi + <file> |Opens file at the last line.|
+|vi +/<pattern> <file>|Opens file at first occurrence of specified string pattern|
+
+Useful commands
+
+|Cmd| Description|
+|----------|-----|
+|:wq|Save and exit|
+|ZZ|Save and exit|
+|:x|Save and exit|
+|:w|Save without exit|
+|:w!|Override file protection and save|
+|:q|Exit the file|
+|:q!|Exit without saving|
+|:n|Edit next file|
+|:e!|return to previous saved version|
+
+##4.2 Maneuvering wihting a file
+
+Navigation commands
+
+|Cmd| Description|
+|----------|-----|
+|Ctrl+f |(Page Down) |
+|Ctrl+b |(Page Up) |
+|1G |Go to FIRST line in file.|
+|G |Go to LAST line in file.|
+|H|Go to top of screen|
+|L|Go to bottom of screen|
+
+##4.3 Copying and pasting
+
+|Cmd| Description|
+|----------|-----|
+|nyy |Yank(copy) n lines |
+|P|paste above the cursor|
+|D|Delete to the end of current line|
+
+##4.4 Manipulating text
+
+|Cmd| Description|
+|----------|-----|
+|r|Replace char under cursor|
+|~|Change case of a char|
+|cc|Delete the current line and insert|
+|C|(c$)Delete to the end of line and insert|
+|R|Type over the chars in current line|
+|s|Delete char enter insert mode|
+|S|Delete current line and enter insert mode|
+
+##4.5 Search and replace text
+
+|Cmd| Description|
+|----------|-----|
+|/<pattern>|Search forward for a string.|
+|?<pattern>|Search backward for a string.|
+|n|Repeat the search forward.|
+|N|Repeat the search backward.|
+|f<char>|Search forward for char in current line.|
+|F<char>|Search backward for char in current line.|
+|;/,    |repeat f search forward or backward|
+
+##4.6 Insert one file into another
+
+:r filename
+:0r filename # place file at the begin of exisitn file
+# insert a command output
+:r !date
+
+##4.7 Joining lines
+
+J
+
+##4.13 Creating shorcuts for commands
+
+:map t xp
+:map # print all map definition
+:unmap t
+
+##4.14 Set default editor
+
+export EDITOR=vi
+export VISUAL=$EDITOR
+
+#5 Managing files and directory
+
 
