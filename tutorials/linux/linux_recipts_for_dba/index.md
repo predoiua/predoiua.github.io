@@ -268,7 +268,7 @@ echo "oracle ALL=/usr/sbin/groupadd,/usr/sbin/useradd" >> /etc/sudoers
 sudo -l #check what can be run as root
 ~~~
 
-#3.12 user/group
+##3.12 user/group
 
 ~~~ bash
 groupadd oinstall
@@ -358,10 +358,11 @@ Navigation commands
 
 ##4.6 Insert one file into another
 
-:r filename
-:0r filename # place file at the begin of exisitn file
-# insert a command output
-:r !date
+|Cmd| Description|
+|----------|-----|
+|:r filename||
+|:0r filename| place file at the begin of existing file|
+|:r !date| insert a command output|
 
 ##4.7 Joining lines
 
@@ -369,15 +370,18 @@ J
 
 ##4.13 Creating shorcuts for commands
 
-:map t xp
-:map # print all map definition
-:unmap t
+|Cmd| Description|
+|----------|-----|
+|:map t xp||
+|:map | print all map definition|
+|:unmap t||
 
 ##4.14 Set default editor
 
+~~~sh
 export EDITOR=vi
 export VISUAL=$EDITOR
-
+~~~
 #5 Managing files and directory
 
 
