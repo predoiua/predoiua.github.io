@@ -382,6 +382,21 @@ J
 export EDITOR=vi
 export VISUAL=$EDITOR
 ~~~
+
 #5 Managing files and directory
 
+##5.1 Showing the current working directory
 
+~~~sh
+pwd # by default don't follow symbolic link, same as
+echo $PWD
+~~~
+
+##5.2 Changing directory
+
+You need exec rigth on a folder on target folder.
+~~~sh
+cd ~ # same as
+cd
+cd - # move to previous folder
+~~~
