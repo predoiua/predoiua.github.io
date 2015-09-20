@@ -40,6 +40,14 @@ set line editing mode
 ~~~sh
 set -o vi
 set -o emacs # default mode
+find / -name core 2> /dev/null
+# -u for sort = unique
+cut -d: -f7 < /etc/passwd | sort -u
+# execute second command only if first one succeed
+lpr /tmp/t2 && rm /tmp/t2
+# execute second command only if first one fail
+cp --preserve --recursive /etc/* /spare/backup \
+|| echo "Did NOT make backup"
 ~~~
 
 
