@@ -20,7 +20,7 @@ categories: scala
 ~~~ scala
 2.to(10)
 2 to 10
-2.toString // instead of cast2.to(10)
+2.toString // instead of cast
 3+4 // same as 3+(4)
 ~~~
 
@@ -166,3 +166,54 @@ t._2
 
 ##5. Classes A1
 
+- fields in classes come wiht getters and setters
+- a field can be replace by custom getter and setter
+- use @BeanProperty to generate JavaBeans getXXX/setXXX
+- every class has a primary constructor its paramters = fields. It exectues all statements in the body of the class
+- Auxiliary constructors = this
+- use () at method end for mutator one, skip () for accessor methods
+
+Check java code generated from Scala
+~~~ bash
+scalac person.scala
+javap -private Person
+~~~
+
+~~~scala
+class Counter { // no public
+	private var value = 0 // fields must be initialized
+	def increment() { value += 1} // methods are public by default
+	def current() = value
+}
+val myC = new Counter // or new Counter()
+myC.increment // or myC.increment()
+println(myC.current)
+class Person {
+	var age = 0
+}
+var p = new Person
+p.age = 21
+println (p.age)
+p.age_=(22)
+println (p.age()) // ?? it is in java class, but I can't call it
+
+class Person{
+	private var page=0
+	private[this] var value = 0 // only method in this class can use value field
+	def age = page
+	def age_= (newValue:Int)= page = newValue
+}
+
+import scala.beans.BeanProperty
+class Person{
+	@BeanProperty var name:String =  _
+}
+class Person(val name: String, val age: Int) { // Primary Constructor
+	println("part of Primary Constructor")
+	def this(name:String){
+		this(name, 0) // call to primary constructor must be first
+		println("auxiliary constructor")
+	}
+}
+class Person(val name: String = "", val age: Int = 0) // use this to avoid auxiliary constructors
+~~~
