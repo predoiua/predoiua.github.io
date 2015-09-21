@@ -395,8 +395,60 @@ echo $PWD
 ##5.2 Changing directory
 
 You need exec rigth on a folder on target folder.
+
 ~~~sh
 cd ~ # same as
 cd
 cd - # move to previous folder
+~~~
+
+##5.5 Viewing a list of directories
+
+~~~sh
+ls -l | grep ^d
+ls -p | grep / # -p add / at folder name
+ls -F #add an indicator for filet type
+~~~
+
+##5.5 Listing files
+
+~~~sh
+ls -altr
+echo *
+~~~
+
+##5.9 Change file ownership and gropup membership
+
+~~~sh
+chowm oracle:dba /var/opt/oracle
+chgrp -R dba *.sql
+~~~
+
+##5.14 Determining file type
+
+~~~sh
+ls -F
+~~~
+
+##5.15 Compare files
+
+~~~sh
+sdiff a.sh b.sh
+diff a.sh b.sh > d.diff
+patch a.sh d.diff
+~~~
+
+##5.17 Copying directories
+
+~~~sh
+scp -rp scripts user@host:/home/user/scripts
+rsync -ra --progress scripts user@host:/home/user/scripts
+~~~
+
+##5.20 Remove files
+
+~~~sh
+ls *.bak
+echo !$ # !$ = *.bak from previous command
+rm !$ 
 ~~~
