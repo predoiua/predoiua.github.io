@@ -37,9 +37,9 @@ useradd bi
 mkdir -p /home/bi
 chown bi:bi /home/bi
 passwd bi
-groupadd mkt
-usermod -a -G mkt bi
-usermod -g mkt bi
+groupadd big1
+groupadd big2
+usermod -a -G big1,big2 bi
 usermod -g bi bi
 id bi
 su - bi
@@ -68,6 +68,9 @@ bind -p
 test "abc" \< "abc" ; echo $?
 # ( cmd ) is run in a sub-shell, so we escape it
 [ ! \( "a" = "$HOME" -o 3 -lt 4 \) ]; echo ?
+
+[[ "a" < "b" ]]; echo $?
+[[ "a" > "b" || 1 -lt 10 ]]; echo $?
 ~~~
 
 ~~~ bash
