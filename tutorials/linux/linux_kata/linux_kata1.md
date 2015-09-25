@@ -92,3 +92,10 @@ fct1(){
 val1 = `fct1 param`
 err ${val1} $?
 ~~~
+
+##Funny
+
+~~~sh
+> -f
+rm .\-f
+~~~
