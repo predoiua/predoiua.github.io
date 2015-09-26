@@ -395,8 +395,148 @@ echo $PWD
 ##5.2 Changing directory
 
 You need exec rigth on a folder on target folder.
+
 ~~~sh
 cd ~ # same as
 cd
 cd - # move to previous folder
 ~~~
+
+##5.5 Viewing a list of directories
+
+~~~sh
+ls -l | grep ^d
+ls -p | grep / # -p add / at folder name
+ls -F #add an indicator for filet type
+~~~
+
+##5.5 Listing files
+
+~~~sh
+ls -altr
+echo *
+~~~
+
+##5.9 Change file ownership and gropup membership
+
+~~~sh
+chowm oracle:dba /var/opt/oracle
+chgrp -R dba *.sql
+~~~
+
+##5.14 Determining file type
+
+~~~sh
+ls -F
+~~~
+
+##5.15 Compare files
+
+~~~sh
+sdiff a.sh b.sh
+diff a.sh b.sh > d.diff
+patch a.sh d.diff
+~~~
+
+##5.17 Copying directories
+
+~~~sh
+scp -rp scripts user@host:/home/user/scripts
+rsync -ra --progress scripts user@host:/home/user/scripts
+~~~
+
+##5.20 Remove files
+
+~~~sh
+ls *.bak
+echo !$ # !$ = *.bak from previous command
+rm !$ 
+~~~
+
+##5.23 Finding files
+
+~~~sh
+find . -name  "alert*.log" 2>/dev/null
+~~~
+
+##5.24 Finding string in files
+
+~~~sh
+find . -name *.sql | xargs grep -i "create table"
+# -q = quiet
+# -l = print filename instead of pattern
+find . -name *.sql -exec grep -qil "create table" {} \; -print
+~~~
+
+##5.25 Finding recently modified files
+
+|Find time option|Description|
+|----------------|-----------|
+| -amin | file accessed more than +n, less than -n, or exactly n minutes ago|
+| -atime| -"- days ago|
+| -cmin | changed -"- |
+| -ctime| changed days|
+| -mmin | modified min|
+| -mtime| modified days|
+| -newer file| modified more recently than file|
+
+
+~~~sh
+# modified in the last 20 minutes
+find . -mnin -20
+~~~
+
+##5.26 Finding and removing old files
+
+~~~sh
+find . -type f -mtime +30 -exec rm -f {} \;
+~~~
+
+##5.27 Finding the largest file
+
+~~~sh
+# -ls = print result in ls format 
+# -nrkf = numeric, reverse order, by 7th field
+find . -ls | sort -nrk7 | head -5
+~~~
+
+##5.28 Finding files by size
+
+~~~sh
+# < 200k
+find . -size -200k
+~~~
+
+##5.29 Sorting by file size
+
+~~~sh
+ls -alS 
+ls -al | sort -rk5 
+~~~
+
+##5.30 Find large folders
+
+~~~sh
+# -S = don't include subfolders
+# -nr = numeric, reverse
+du -S . | sort -nr | hear -5
+# -sh = summary, human
+du -sh ~
+~~~
+
+##5.31 Truncate on OS file
+
+~~~sh
+> x.x
+cat /dev/null > x.x
+cp /dev/null x.x
+~~~
+
+##5.33 Create a second name for a file
+Create a symbolic link.
+
+~~~sh
+ln -s file newFile
+~~~
+
+#6 Archiving and Compessing files

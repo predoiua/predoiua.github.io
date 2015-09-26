@@ -5,7 +5,7 @@
 - [Scripting](../tutorials/linux/linux_scripting/)
 - [Networking](../tutorials/linux/linux_networking/)
 - [Linux Recipes for DBA](../tutorials/linux/linux_recipts_for_dba/)
-- [Routine 1](../tutorials/linux/linux_routine/linux_routine1.html)
+- [Kata 1](../tutorials/linux/linux_kata/linux_kata1.html)
 
 ###Scala
 - [General](../tutorials/scala/)
