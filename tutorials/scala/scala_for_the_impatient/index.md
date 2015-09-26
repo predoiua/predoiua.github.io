@@ -92,6 +92,7 @@ try { ... } catch { ... } finally { ... }
 ##3. Array A1
 
 Key points:
+
 - Array for fixed size, ArrayBuffer for variable size
 - no "new" when supply initial values
 - () to access elements. Similar with [] in C, Java
@@ -115,7 +116,7 @@ import collection.mutable.ArrayBuffer
 var b = new ArrayBuffer[Int]()
 b += 10 // add new element at the end
 b += ( 1,2,3)
-b ++= Array(1,2.3)
+b ++= Array(1,2,3)
 for(elem <- b) println( elem );
 for(i <- 0 unil b.size ) println (b(i)); //!!until =  0 until 10 = 0 to 9
 ~~~
@@ -142,6 +143,7 @@ b.mkString("<",",",">")
 ##4. Maps and Tuples A1
 
 Key points:
+
 - need to select mutable or immutable maps
 - default is immutable hash map
 
@@ -159,6 +161,7 @@ val scores: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[St
 ~~~
 
 - tuples
+
 ~~~ scala
 val t = (1, 3.14, "Fred") // type Tuple3[Int, Double, java.lang.String
 t._2
@@ -166,7 +169,7 @@ t._2
 
 ##5. Classes A1
 
-- fields in classes come wiht getters and setters
+- fields in classes come with getters and setters
 - a field can be replace by custom getter and setter
 - use @BeanProperty to generate JavaBeans getXXX/setXXX
 - every class has a primary constructor its paramters = fields. It exectues all statements in the body of the class
@@ -174,6 +177,7 @@ t._2
 - use () at method end for mutator one, skip () for accessor methods
 
 Check java code generated from Scala
+
 ~~~ bash
 scalac person.scala
 javap -private Person
