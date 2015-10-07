@@ -11,7 +11,7 @@ SELECT  FILE_NAME FROM DBA_DATA_FILES;
 =========== check tablespaces ======
 select TABLESPACE_NAME from dba_tablespaces;
 =========== tablespace size =========================
-select 
+select
     df.tablespace_name "Tablespace",
     totalusedspace "Used MB",
     (df.totalspace - tu.totalusedspace) "Free MB",
@@ -21,12 +21,12 @@ from
     (
     select tablespace_name,
     round(sum(bytes) / 1048576) TotalSpace
-    from dba_data_files 
+    from dba_data_files
     group by tablespace_name
     ) df,
     (
     select round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name
-    from dba_segments 
+    from dba_segments
     group by tablespace_name
     ) tu
 where df.tablespace_name = tu.tablespace_name ;
@@ -48,38 +48,35 @@ expdp system/manager \
     content=metadata_only \
     include=tablespace \
     directory=data_pump_dir  \
-    dumpfile=tablespace.dmp 
+    dumpfile=tablespace.dmp
 
 
 # test previous exp
 impdp system/manager \
     full=y dumpfile=tablespace.dmp sqlfile=tablespace.sql \
-    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_02.dbf:/home/oracle/oradata/11g/kds/TBL_01.dbf
+    REMAP_DATAFILE=/home/oracle/oradata/TBL_02.dbf:/home/oracle/oradata/11g/TBL_01.dbf
 
 
 expdp system/manager \
     CONTENT=ALL \
-    schemas=WAVE60 \
+    schemas=SCH \
     directory=data_pump_dir \
-    dumpfile=10g.dmp 
+    dumpfile=10g.dmp
 
 
 Start Oracle 11g
 CREATE or REPLACE DIRECTORY data_pump_dir AS '/home/oracle/data_pump';
-mkdir -p /home/oracle/oradata/11g/kds
+mkdir -p /home/oracle/oradata/11g
 
-DROP TABLESPACE TBL_WAVE60_DATA INCLUDING CONTENTS AND DATAFILES;
+DROP TABLESPACE TBL_SCH_DATA INCLUDING CONTENTS AND DATAFILES;
 
 impdp system/manager \
     full=y dumpfile=tablespace.dmp \
-    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_02.dbf:/home/oracle/oradata/11g/kds/TBL_01.dbf
+    REMAP_DATAFILE=/home/oracle/oradata/TBL_02.dbf:/home/oracle/oradata/11g/TBL_01.dbf
 
 impdp system/manager \
-    schemas=WAVE60 \
+    schemas=SCH \
     directory=data_pump_dir  \
     dumpfile=10g.dmp \
-    REMAP_TABLESPACE=TBL_WAVE60_DATA:TBL_WAVE60_DATA \
-    REMAP_DATAFILE=/home/oracle/oradata/kds/TBL_02.dbf:/home/oracle/oradata/11g/kds/TBL_01.dbf
-
-
-
+    REMAP_TABLESPACE=TBL_SCH_DATA:TBL_SCH_DATA \
+    REMAP_DATAFILE=/home/oracle/oradata/TBL_02.dbf:/home/oracle/oradata/11g/TBL_01.dbf
