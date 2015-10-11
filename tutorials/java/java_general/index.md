@@ -49,3 +49,15 @@ javac vv10/test/TestInitialize.java
 java vv10.test.TestInitialize
 ~~~
 
+###Build a list
+
+~~~java
+//with an anonymous inner class
+ArrayList<String> list1 = new ArrayList<String>() {{
+    add(1);
+    add(2);
+    add(3);
+}};
+
+List<String> list1 = Arrays.asList(1,2,3);
+~~~
