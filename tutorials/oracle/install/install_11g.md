@@ -1,6 +1,15 @@
+---
+layout: post
+date:   2015-10-13 22:00:00
+categories: oracle
+---
+* toc
+{:toc}
+
 #Install Oracle 11g on Centos
 
 ##Run as root
+
 ###Linux parameters
 
 ~~~bash
@@ -39,6 +48,7 @@ cp /etc/oratab /etc/oratab.10g
 ~~~
 
 ##Run as oracle
+
 ###Install Oracle 11g
 
 ~~~bash

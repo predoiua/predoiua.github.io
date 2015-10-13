@@ -1,3 +1,10 @@
+---
+layout: post
+date:   2015-10-13 22:00:00
+categories: oracle
+---
+* toc
+{:toc}
 
 #Oracle 10g R2 clean on CentOS 5.5
 
@@ -5,9 +12,12 @@
 ##Install required software
 
 http://www.idevelopment.info/data/Oracle/DBA_tips/Linux/LINUX_15.shtml
+
 pirut-> Package manager
+
 pup -> Package updater
-==========
+
+~~~
 Install:
 Desktop Environments
     GNOME Desktop Environment
@@ -33,6 +43,7 @@ Base System
 or
 ( Where is Java group ?)
 yum grouplist
+~~~
 
 ~~~bash
 cat <<FIN |
@@ -127,8 +138,11 @@ chmod -R 775 /home/oracle/oracle/product/10.2.0/db_2
 #mount -o uid=501,gid=501 -o umask=022 -t vboxsf kit_oracle /home/oracle/kit
 
 runInstall
+~~~
 
+##Configure, install DB
 
+~~~bash
 ###### as root #########
 run as root:
 /home/oracle/oraInventory/orainstRoot.sh
@@ -156,10 +170,7 @@ dbca
 ~~~~
 
 
-
-
-
-##Linux check behore install
+##Linux check before install
 
 ### Check
 
@@ -188,7 +199,7 @@ uname -r
 # rpm -q package_name
 ~~~~
 
-###Use and groups
+###Users and groups
 
 ~~~bash
 #The Oracle Inventory group (typically, oinstall)
@@ -201,8 +212,12 @@ grep dba /etc/group
 # uid=440(oracle) gid=200(oinstall) groups=201(dba),202(oper)
 id oracle
 #usermod -g oinstall -G dba oracle
+~~~
 
-# Check semaphors
+###Others
+
+~~~bash
+# Check semaphores
 /sbin/sysctl -a
 cat /etc/sysctl.conf
 

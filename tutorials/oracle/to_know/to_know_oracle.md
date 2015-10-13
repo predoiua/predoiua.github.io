@@ -1,9 +1,16 @@
+---
+layout: post
+date:   2015-10-13 22:00:00
+categories: oracle
+---
+* toc
+{:toc}
 
 #To Know
 
-## Server administration
+##Server administration
 
-### How to automatically start Oracle 10g on CentOS 5 ?
+###Automatically start Oracle 10g on CentOS 5
 
 ~~~bash
 1. vi /etc/oratab. At the end should be Y
@@ -43,17 +50,20 @@ chkconfig --level 2345 oracle on
 chkconfig --list oracle
 ~~~
 
-### How to import data with DB pump but change data file location ?
+###Import data with DB pump but change data file location
 
 Tablespaces must be moved in a distinct step.
 I was unable to create both users and tablespaces in same step.
+
+~~~bash
 ...
 remap_datafile=\"/tmp/test01.dbf\":\"/home/oracle/oradata_11g/test01.dbf\"
 ...
+~~~
 http://www.dba-oracle.com/t_rman_173_impdp_remap.htm
 
 
-### How to check if an user is connected in Oracle ?
+###Check if an user is connected in Oracle
 
 ~~~sql
 select s.sid, s.serial#, s.status, p.spid 
@@ -64,7 +74,7 @@ and p.addr (+) = s.paddr;
 
 ##SQL
 
-### Order : asc = default ordere
+###Order : asc = default order
 
 ~~~ sql
 select * from DBA_DB_LINKS order by CREATED;

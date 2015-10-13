@@ -1,9 +1,14 @@
+---
+layout: post
+date:   2015-10-13 22:00:00
+categories: oracle
+---
+* toc
+{:toc}
 
 #Oracle Data Pump (expdp)
 
-Use data pump to migrate data from 10g to 11g.
-
-## Check what to export
+##Check what to export
 
 ~~~sql
 =========== check users to export ====
@@ -38,11 +43,13 @@ where df.tablespace_name = tu.tablespace_name ;
 ##Export
 
 ###1. Configure data pump
+
 ~~~bash
 #as oracle in bash
 mkdir -p /home/oracle/data_pump
 #as system in sqlplus
 CREATE or REPLACE DIRECTORY data_pump_dir AS '/home/oracle/data_pump';
+~~~
 
 ###2. Create export
 

@@ -8,7 +8,11 @@ categories: java
 
 ##Auto Import
 
-For convenience, the Java compiler automatically imports three entire packages for each source file: (1) the package with no name, (2) the java.lang package, and (3) the current package (the package for the current file)...
+For convenience, the Java compiler automatically imports three entire packages for each source file:
+
+* (1) the package with no name, 
+* (2) the java.lang package, and 
+* (3) the current package (the package for the current file)...
 
 
 ##Non Static initializer
@@ -52,6 +56,8 @@ java vv10.test.TestInitialize
 ###Build a list
 
 ~~~java
+{% raw  %}
+
 //with an anonymous inner class
 ArrayList<String> list1 = new ArrayList<String>() {{
     add(1);
@@ -60,4 +66,5 @@ ArrayList<String> list1 = new ArrayList<String>() {{
 }};
 
 List<String> list1 = Arrays.asList(1,2,3);
+{% endraw %}
 ~~~
