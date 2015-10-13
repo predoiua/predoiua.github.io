@@ -1,5 +1,8 @@
-Oracle 10g R2 clean on CentOS 5.5
 
+#Oracle 10g R2 clean on CentOS 5.5
+
+
+##Install required software
 
 http://www.idevelopment.info/data/Oracle/DBA_tips/Linux/LINUX_15.shtml
 pirut-> Package manager
@@ -31,6 +34,7 @@ or
 ( Where is Java group ?)
 yum grouplist
 
+~~~bash
 cat <<FIN |
     GNOME Desktop Environment
     Editors
@@ -51,7 +55,11 @@ while read pack; do
 done
 
 yum groupinfo "Base" | less
+~~~
 
+##Configure local machine
+
+~~~bash
 ###### as root ##########
 groupadd oinstall
 groupadd dba
@@ -105,7 +113,11 @@ vi /etc/profile
 echo redhat-4 >>  /etc/redhat-release
 ## !!!! rpm -qa --queryformat "%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n"| grep libXp
 ## pirut -> search libXp -> install all of them
+~~~~
 
+##Install Oracle software
+
+~~~bash
 ###### as oracle #########
 mkdir -p /home/oracle/oracle/product/10.2.0/db_2
 #chown -R oracle:oinstall /home/oracle/oracle/product/10.2.0/db_2
@@ -141,15 +153,17 @@ export NLS_LANG="AMERICAN_AMERICA.WE8MSWIN1252"
 . ~/.bashrc
 
 dbca
-#####
+~~~~
 
 
 
 
-#########
-Linux check behore install
-#########
-1. Check
+
+##Linux check behore install
+
+### Check
+
+~~~bash
 #RAM > 2G
 grep MemTotal /proc/meminfo 
 #Architecture
@@ -172,9 +186,11 @@ cat /proc/version
 uname -r
 # Check required packages
 # rpm -q package_name
+~~~~
 
-2. Use and groups
+###Use and groups
 
+~~~bash
 #The Oracle Inventory group (typically, oinstall)
 more /etc/oraInst.loc
 #The OSDBA group (typically, dba)
@@ -192,3 +208,4 @@ cat /etc/sysctl.conf
 
 # Mouted FS
 df -k
+~~~

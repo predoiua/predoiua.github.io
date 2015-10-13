@@ -1,9 +1,11 @@
 
-Oracle Data Pump (expdp)
-======================
+#Oracle Data Pump (expdp)
+
 Use data pump to migrate data from 10g to 11g.
 
-0. Check what to export
+## Check what to export
+
+~~~sql
 =========== check users to export ====
 select username from all_users;
 =========== check data file location ======
@@ -31,18 +33,22 @@ from
     ) tu
 where df.tablespace_name = tu.tablespace_name ;
 ============================
+~~~
 
+##Export
 
-Start Oracle 10g
-1. Configure data pump
+###1. Configure data pump
+~~~bash
 #as oracle in bash
 mkdir -p /home/oracle/data_pump
 #as system in sqlplus
 CREATE or REPLACE DIRECTORY data_pump_dir AS '/home/oracle/data_pump';
 
-2. Create export
+###2. Create export
+
 I need to create 2 exports: one for tablespace specifications, one for schemas
 
+~~~bash
 expdp system/manager \
     full=y \
     content=metadata_only \
@@ -62,9 +68,11 @@ expdp system/manager \
     schemas=SCH \
     directory=data_pump_dir \
     dumpfile=10g.dmp
+~~~~
 
+##Import
 
-Start Oracle 11g
+~~~sql
 CREATE or REPLACE DIRECTORY data_pump_dir AS '/home/oracle/data_pump';
 mkdir -p /home/oracle/oradata/11g
 
@@ -80,3 +88,4 @@ impdp system/manager \
     dumpfile=10g.dmp \
     REMAP_TABLESPACE=TBL_SCH_DATA:TBL_SCH_DATA \
     REMAP_DATAFILE=/home/oracle/oradata/TBL_02.dbf:/home/oracle/oradata/11g/TBL_01.dbf
+~~~
