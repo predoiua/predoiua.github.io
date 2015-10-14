@@ -33,3 +33,39 @@ truncate table x;
 insert into x values ( 'b' );
 commit;
 ~~~~
+
+###Using objects
+
+http://stackoverflow.com/questions/1020348/oracle-select-from-record-datatype
+
+~~~sql
+create type myobj is object ( 
+   id int
+  ,name varchar2(10)
+);
+/
+
+create package mypkg as
+      function f return myobj;
+end mypkg;
+/
+
+
+create package body mypkg  as
+  function f return myobj
+  is
+  begin
+    return myobj(1,'test');
+  end f;
+end mypkg;
+/
+
+select mypkg.f from dual;
+/
+
+drop package mypkg;
+/
+
+drop type myobj;
+/
+~~~
