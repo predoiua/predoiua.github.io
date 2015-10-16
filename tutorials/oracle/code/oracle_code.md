@@ -69,3 +69,50 @@ drop package mypkg;
 drop type myobj;
 /
 ~~~
+
+###Delete from views
+
+Outer joins can lead to nasty errors. ( Tested in 10 and 11)
+
+~~~sql
+drop table x;
+create table x(id number);
+insert into x values (1);
+insert into x values (2);
+insert into x values (3);
+insert into x values (4);
+insert into x values (5);
+
+drop table y;
+create table y(id number);
+insert into y values (1);
+insert into y values (2);
+
+commit;
+delete from (
+    select x.*
+    from x
+        left join y on x.id = y.id 
+    where x.id is null
+);
+-- error : ORA-01752: cannot delete from view without exactly one key-preserved table
+alter table x add constraint uk_id unique ( id );
+-- execute same delete 
+-- error : ORA-00600: internal code error
+
+delete from (
+    select x.*
+    from x
+        join y on x.id = y.id 
+);
+-- rez=>OK
+
+-- we need to delete with something like
+delete from x where rowid in (
+    select x.rowid
+    from x
+        left join y on x.id = y.id 
+    where y.id is null
+);
+~~~
+
