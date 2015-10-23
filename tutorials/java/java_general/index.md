@@ -68,3 +68,18 @@ ArrayList<String> list1 = new ArrayList<String>() {{
 List<String> list1 = Arrays.asList(1,2,3);
 {% endraw %}
 ~~~
+
+
+###IntSteam
+
+~~~java
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
+public class TestStream{
+    public static void main(String[] args){
+        int[] values = {3,10,6};
+        IntStream.of(values).forEach(value -> System.out.printf(" %d :",value));
+    }
+}
+~~~
