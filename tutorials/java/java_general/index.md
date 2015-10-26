@@ -93,3 +93,10 @@ public class TestStream{
 		System.out.printf("strings in uppercase: %s%n", ls);    }
 }
 ~~~
+
+
+###Enable java net debug
+
+~~~bash
+java  -Djavax.net.debug=all  ...
+~~~
