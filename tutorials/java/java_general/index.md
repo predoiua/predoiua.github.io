@@ -68,3 +68,35 @@ ArrayList<String> list1 = new ArrayList<String>() {{
 List<String> list1 = Arrays.asList(1,2,3);
 {% endraw %}
 ~~~
+
+
+###IntSteam
+
+~~~java
+import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class TestStream{
+    public static void main(String[] args){
+		int[] values = {3,10,6};
+		IntStream.of(values)
+			.filter(nr -> nr % 2 == 0)
+			.forEach(value -> System.out.printf(" %d :",value));
+
+		String[] strings ={"Red", "orange", "Yellow", "green", "Blue", "indigo", "Violet"};
+		Stream<String> ss = Arrays.stream(strings);
+		List<String> ls = ss
+			.map(String::toUpperCase)
+			.collect(Collectors.toList());
+		System.out.printf("strings in uppercase: %s%n", ls);    }
+}
+~~~
+
+
+###Enable java net debug
+
+~~~bash
+java  -Djavax.net.debug=all  ...
+~~~
