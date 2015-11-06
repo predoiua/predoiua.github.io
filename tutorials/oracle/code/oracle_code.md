@@ -116,3 +116,75 @@ delete from x where rowid in (
 );
 ~~~
 
+###Read sql data from bash
+
+~~~
+#!/bin/bash
+
+#exit on error
+set -e
+#display commands
+#set -x
+while read -a row
+do
+        echo "I have:..${row[0]}..${row[1]}..${row[2]}.."
+done < <(sqlplus -s scott/tiger << FIN
+    set head off;
+    set newpage none;
+    set feedback off;
+    select sysdate s, 'a' a, 'b' from all_objects where rownum < 5;
+    exit;
+FIN
+)
+~~~
+
+###Execute sql commands from bash
+
+~~~bash
+#!/bin/bash
+set -e
+
+function execute_sql() {
+    local p_conn=$1
+    local p_sql=$3
+
+    p_sql=${p_sql//old_string/new_string}
+    p_res=`sqlplus -s ${p_conn} << FIN 2>&1
+        set timing on
+        ${p_sql}
+        exit;
+FIN
+`
+    echo "${p_res}"
+}
+
+
+function process() {
+    local p_sql
+
+    p_sql=$(cat<< FIN
+        begin execute immediate 'drop table temp'; exception when others then null; end;
+        /
+        create table temp (
+            row_id urowid
+          ,code number
+        );
+
+        insert into temp( row_id, code )
+        select rowid, 123 code
+        from emp
+        ;
+        commit;
+
+        delete from emp@db_link
+        where rowid in ( select row_id from temp );
+
+        commit;
+FIN
+)
+    execute_sql "scott/tiger@orcl" "${p_sql}"
+
+}
+
+process
+~~~
