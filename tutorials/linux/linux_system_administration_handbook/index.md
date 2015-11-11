@@ -76,4 +76,16 @@ echo mv $fname ${fname/.log/.LOG/}; done | bash -x
 fc
 ~~~
 
+* $# = number of command line arguments
+* $* = all the supplied arguments
+* $0 = name by which script was invoked. It not affect $* or $#
 
+~~~bash
+#redirect stdin to read form file pass as first parameter
+exec 0<$1
+counter=1
+while read line; do
+	echo "$counter: $line"
+	$((counter++))
+done
+~~~
