@@ -36,11 +36,13 @@ locate signal.h # consults a precompiled index of the filesystem to locate filen
 
 ##1.2 scripting and the shell
 
-set line editing mode
-~~~sh
+###1.2.1 Shell basics
+
+~~~bash
+#set line editing mode
 set -o vi
 set -o emacs # default mode
-find / -name core 2> /dev/null
+find / -name core 2>/dev/null
 # -u for sort = unique
 cut -d: -f7 < /etc/passwd | sort -u
 # execute second command only if first one succeed
@@ -48,8 +50,30 @@ lpr /tmp/t2 && rm /tmp/t2
 # execute second command only if first one fail
 cp --preserve --recursive /etc/* /spare/backup \
 || echo "Did NOT make backup"
+
+# -t = separator
+# -k = start-stop field. -k3 = starting with 3rd field till the end
+# -n = numerical sort. Otherwise 2 > 100
+sort -t: -k3,3 -n /etc/group
+
+# /dev/tty = current terminal
+find /etc -name pass* 2>/dev/null | tee /dev/tty | wc -l
 ~~~
 
+###1.2.2 Bash scripting
 
+~~~bash
+bash helloworld # execute script in a new instance of bash
+source helloworld # existing login shell read and execute the contents of the file
+. helloworld # same as before 
+~~~
+
+~~~bash
+find . -type f -name '*.log ' | grep -v .do-not-touch | while read fname; do
+echo mv $fname ${fname/.log/.LOG/}; done | bash -x
+
+#open previous command in editor
+fc
+~~~
 
 
