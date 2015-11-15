@@ -116,4 +116,18 @@ done
 
 
 
+##1.3 Booting and Shutting down
 
+##1.3 Bootstrapping
+
+UNIX systems can boot just enough to run a shell on the system console. 
+This option is traditionally known as booting to single-user mode, recovery mode, or maintenance mode
+
+
+A typical bootstrapping process consists of six distinct phases:
+* Reading of the boot loader from the master boot record
+* Loading and initialization of the kernel
+* Device detection and configuration
+* Creation of kernel processes
+* Administrator intervention (single-user mode only)
+* Execution of system startup scripts
