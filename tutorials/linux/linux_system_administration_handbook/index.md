@@ -118,7 +118,7 @@ done
 
 ##1.3 Booting and Shutting down
 
-##1.3 Bootstrapping
+###1.3.1 Bootstrapping
 
 UNIX systems can boot just enough to run a shell on the system console. 
 This option is traditionally known as booting to single-user mode, recovery mode, or maintenance mode
@@ -131,3 +131,43 @@ A typical bootstrapping process consists of six distinct phases:
 * Creation of kernel processes
 * Administrator intervention (single-user mode only)
 * Execution of system startup scripts
+
+##1.9 Periodic Processes
+
+###1.9.1 Schedule Commands
+
+- executed with sh
+- at most 1 crontab per user. Default location /var/spool/cron
+- crontab command notify cron daemon on crontab change. If manually edit crontab send HUP to cron daemon
+
+###1.9.2 Crontab file format
+
+- minute hour dom month weekday command
+
+Command is not quoted.
+
+Each of the time-related fields may contain
+• A star, which matches everything
+• A single integer, which matches exactly
+• Two integers separated by a dash, matching a range of values
+• A range followed by a slash and a step value, e.g., 1-10/2 (Linux only)
+• A comma-separated list of integers or ranges, matching any value
+
+###1.9.4 Crontab management
+
+~~~bash
+#set filename as your crontab
+crontab filename 
+# list your crontab
+crontab -l
+# edit exisitn crontab
+crontab -e
+# load a new crontab for user bi
+crontab -u bi crontab.new
+~~~
+
+User how can submit crontabs cron.deny and cron.allow in folder /etc.
+
+###1.9.4 LINUX AND VIXIE-CRON EXTENSIONS
+
+Obeys system crontab entries found in /etc/crontab and in the /etc/cron.d directory
