@@ -19,7 +19,7 @@ docker run -it --rm centos:6 /bin/bash
 ~~~ bash
 #Install
 yum info openssh-server
-yum install -y openssh-server openssh-client
+yum install -y openssh-server openssh-clients
 
 #Configure
 vi /etc/ssh/sshd_config
@@ -41,6 +41,9 @@ Form Linux host:
 
 ~~~bash
 docker inspect $(docker ps -qa) | grep IPAddress
+
+# generate keys
+ssh-keygen -t rsa
 
 #copy pub key on remote machine
 cat ~/.ssh/id_rsa.pub | ssh bi@172.17.0.1 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"

@@ -157,7 +157,7 @@ Each of the time-related fields may contain
 
 ~~~bash
 #set filename as your crontab
-crontab filename 
+crontab filename
 # list your crontab
 crontab -l
 # edit exisitn crontab
@@ -168,6 +168,36 @@ crontab -u bi crontab.new
 
 User how can submit crontabs cron.deny and cron.allow in folder /etc.
 
-###1.9.4 LINUX AND VIXIE-CRON EXTENSIONS
+###1.9.5 LINUX AND VIXIE-CRON EXTENSIONS
 
 Obeys system crontab entries found in /etc/crontab and in the /etc/cron.d directory
+
+
+##3.19 Sharing System Files
+
+###3.19.1 WHAT TO SHARE
+
+Filename Function
+/etc/passwd User account information database
+/etc/shadow Holds user account passwords. !! Encryption may vary among UNIX flavors
+/etc/group Defines UNIX groups
+/etc/hosts Maps between hostnames and IP addresses
+/etc/mail/aliases Holds electronic mail aliases
+/etc/sudoers Grants privileges for the sudo command
+/etc/skel/* Holds default configuration files for new home directories
+
+###3.19.2 COPYING FILES AROUND
+
+- The NFS option
+- Push systems vs. pull systems
+- rdist: push files
+- rsync: transfer files more securely
+
+~~~bash
+#to enable edit:
+/etc/xinetd.d/rsync
+# when no ssh, pass is in file
+/etc/rsync.pwd 
+# main configuration file
+/etc/rsyncd.conf
+~~~
