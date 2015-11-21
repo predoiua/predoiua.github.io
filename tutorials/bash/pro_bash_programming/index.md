@@ -10,7 +10,7 @@ categories: bash
 #1.Hello world
 
 ~~~bash
-$stdin.each do |a|
-    puts a
-end
+pwd
+echo "${PWD}"
+echo "$HOME"
 ~~~
