@@ -52,7 +52,7 @@ chkconfig --list oracle
 
 ###Import data with DB pump but change data file location
 
-Tablespaces must be moved in a distinct step.
+Tablespaces have to be moved in a distinct step.
 I was unable to create both users and tablespaces in same step.
 
 ~~~bash
@@ -72,6 +72,12 @@ where s.username = 'myuser'
 and p.addr (+) = s.paddr;
 ~~~
 
+###Create DB link
+
+~~~sql
+CREATE PUBLIC DATABASE LINK remote CONNECT TO scott IDENTIFIED BY tiger USING 'remote'; 
+~~~
+
 ##SQL
 
 ###Order : asc = default order
@@ -85,3 +91,4 @@ select * from DBA_DB_LINKS order by CREATED ASC;
 ###Operations over DB link restriction
 
 - no DML
+

@@ -28,10 +28,12 @@ vi /etc/ssh/sshd_config
 #Start
 #this step will generate RSA & DSA keys. without them next step will fail
 service sshd start
+# ubuntu
+#service ssh restart
 
 #as bi
 mkdir .ssh
-chmod 0700 .ssh
+chmod 0700 ~/.ssh
 touch ~/.ssh/authorized_keys
 chmod 0640 ~/.ssh/authorized_keys
 
