@@ -75,7 +75,17 @@ and p.addr (+) = s.paddr;
 ###Create DB link
 
 ~~~sql
+DROP PUBLIC DATABASE LINK remote; 
 CREATE PUBLIC DATABASE LINK remote CONNECT TO scott IDENTIFIED BY tiger USING 'remote'; 
+~~~
+
+###Modify column data type
+
+~~~sql
+alter table table_name
+modify ( 
+   column_name    varchar2(30)
+);
 ~~~
 
 ##SQL
