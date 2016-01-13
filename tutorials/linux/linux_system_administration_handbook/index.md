@@ -172,6 +172,16 @@ User how can submit crontabs cron.deny and cron.allow in folder /etc.
 
 Obeys system crontab entries found in /etc/crontab and in the /etc/cron.d directory
 
+##1.13 Drivers and the Kernel
+
+The kernel creates all the following concepts from lower-level hardware features:
+- Processes (time-sharing, protected address spaces)
+- Signals and semaphores
+- Virtual memory (swapping, paging, mapping)
+- The filesystem (files, directories, namespace)
+- General input/output (specialty hardware, keyboard, mouse, USB)
+- Interprocess communication (pipes and network connections)
+
 
 ##3.19 Sharing System Files
 

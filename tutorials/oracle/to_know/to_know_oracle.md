@@ -102,3 +102,8 @@ select * from DBA_DB_LINKS order by CREATED ASC;
 
 - no DML
 
+###SQL Plus
+
+~~~
+WHENEVER SQLERROR EXIT
+~~~
