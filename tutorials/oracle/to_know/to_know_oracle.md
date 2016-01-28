@@ -107,3 +107,13 @@ select * from DBA_DB_LINKS order by CREATED ASC;
 ~~~
 WHENEVER SQLERROR EXIT
 ~~~
+
+###Increase process limit
+
+needs DB restart
+
+~~~
+show parameter process
+alter system set processes=300 scope=spfile;
+alter system set sessions=300 scope=spfile;
+~~~
