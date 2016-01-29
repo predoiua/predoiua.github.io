@@ -25,15 +25,15 @@ public class TestInitialize {
 	private ArrayList<String> elems;
 
 	{
-		System.out.println("initilizing...");
+		System.out.println("1.initilizing...");
 		elems = new ArrayList<>();
 		elems.add("test1");
 		elems.add("test2");
-		elems.add("test3");	
+		elems.add("test3");
 	}
 
 	public TestInitialize(){
-		System.out.println("constructor...");
+		System.out.println("2.constructor...");
 		for(String e : elems) {
 			System.out.println(e);
 		}
