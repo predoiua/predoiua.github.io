@@ -31,6 +31,9 @@ service sshd start
 # ubuntu
 #service ssh restart
 
+#start sshd in debug mode:
+#/usr/sbin/sshd -p 22 -D -d -e
+
 #as bi
 mkdir .ssh
 chmod 0700 ~/.ssh
