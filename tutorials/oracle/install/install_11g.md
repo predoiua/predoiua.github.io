@@ -38,7 +38,7 @@ rpm -qa --queryformat "%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n"| grep pdksh
 
 yum install libaio-devel
 yum install sysstat-7.0.2
-yum install pdksh
+yum install pdksh #not in Centos 6.6
 
 # backup Oracle 10 configuration file
 cp /usr/local/bin/dbhome /usr/local/bin/dbhome.10g
