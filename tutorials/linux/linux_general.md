@@ -6,14 +6,14 @@ categories: linux
 * will be replace by toc
 {:toc}
 
-##Enable/disable wireless
+## Enable/disable wireless
 
 ~~~bash
 rfkill help
 rfkill list all
 ~~~
 
-##Trackpad
+## Trackpad
 
 ~~~bash
 xinput

@@ -6,9 +6,9 @@ categories: linux
 * will be replace by toc
 {:toc}
 
-#Getting started
+# Getting started
 
-##1.2 Connect to server
+## 1.2 Connect to server
 -l = user name
 -X = tunnel X over ssh
 
@@ -16,7 +16,7 @@ categories: linux
 ssh -l oracle -X -p 22 server1
 ~~~
 
-##1.3 Logout
+## 1.3 Logout
 
 ~~~ bash
 ctrl-D
@@ -24,14 +24,14 @@ logout
 exit
 ~~~~
 
-##1.4 Check disk space
+## 1.4 Check disk space
 -h = human readable
 
 ~~~ bash
 df -h /dev/sda1
 ~~~
 
-##1.5 Getting help
+## 1.5 Getting help
 
 ~~~ bash
 man -f cd # same as whatis cp
@@ -42,7 +42,7 @@ ls /bin | xargs whatis | less
 whereis echo
 ~~~
 
-##1.6 Correcting command line mistakes
+## 1.6 Correcting command line mistakes
 
 ~~~ bash
 ctrl+_ # undo
@@ -51,16 +51,16 @@ ctrl+t # transpose
 alt+t
 ~~~~
 
-##1.7 Reset screen
+## 1.7 Reset screen
 
 ~~~ bash
 reset
 stty sane
 ~~~
 
-#2. Shell
+# 2. Shell
 
-##2.1 Command history
+## 2.1 Command history
 
 ~~~ bash
 ctrl-n/p
@@ -68,7 +68,7 @@ ctrl-r
 set -o vi
 ~~~
 
-##2.3 View current env variables
+## 2.3 View current env variables
 
 ~~~ bash
 printenv,env,set,export,echo
@@ -76,7 +76,7 @@ PATH, USER, HOME, PWD, SHELL, EDITOR, PS1, SHLVL, DISPLAY
 echo $SHELL = echo $0 = ps
 ~~~~
 
-##2.5 bash configuration
+## 2.5 bash configuration
 
 . = source
 
@@ -95,14 +95,14 @@ MAIL="/var/spool/mail/$USER"
 HOSTNAME=`/bin/hostname`
 ~~~
 
-##2.6 Command prompt
+## 2.6 Command prompt
 
 ~~~ bash
 echo $PS1
 PS1='[\u@\h:${ORACLE_SID}]$ '
 ~~~~
 
-##2.7 Command schortcut
+## 2.7 Command schortcut
 
 - alias
 - shell function
@@ -115,9 +115,9 @@ unalias rm
 type cd
 ~~~~~
 
-##2.8 Providing input to commands
+## 2.8 Providing input to commands
 
-##2.9 Redirecting command output
+## 2.9 Redirecting command output
 
 ~~~ bash
 cat ~/.bashrc 1>out.txt 2>/dev/stdout
@@ -125,7 +125,7 @@ cat ~/.bashrc 1>out.txt 2>/dev/stdout
 cat ~/.bashrc 1>out.txt 2>&1
 ~~~~
 
-##2.10 Sending output to nowhere
+## 2.10 Sending output to nowhere
 
 ~~~ bash
 time dd if=/u01/app/oracle/oradata/XE/system.dbf of=/dev/null
@@ -134,7 +134,7 @@ find . -name "alert*.log" 2>/dev/null
 exp user/pass full=y file=/dev/null
 ~~~
 
-##2.11 Display and capture command output
+## 2.11 Display and capture command output
 
 ~~~ bash
 ls -lart . | tee out.log
@@ -142,7 +142,7 @@ ls -lart . | tee out.log
 ls -lart . > >(tee stdout.log) 2> >(tee stderr.log >&2)
 ~~~
 
-##2.12 Recording all shell command output
+## 2.12 Recording all shell command output
 
 ~~~ bash
 script update.log
@@ -150,20 +150,20 @@ script update.log
 exit
 ~~~
 
-##2.13 Change login shell
+## 2.13 Change login shell
 
 ~~~ bash
 cat /etc/shells
 chsh -s /bin/bash
 ~~~
 
-#2.14 Modify command path search
+## 2.14 Modify command path search
 
 ~~~ bash
 export PATH=$PATH:~/bin
 ~~~~
 
-##2.15 Build-in commands
+## 2.15 Build-in commands
 
 ~~~
 type -a pwd
@@ -171,7 +171,7 @@ builtin pwd # call build in pwd
 command pwd # call external pwd
 ~~~
 
-##2.16 Setting backspace key
+## 2.16 Setting backspace key
 
 ~~~
 stty erase Ctrl+Backspace
@@ -179,28 +179,29 @@ stty erase <Backspace>
 stty erase ^H
 ~~~
 
-##2.17 Long commands
+## 2.17 Long commands
+
 End multiline commands with \
 or
 CTRL + x e
 
-#3. Manage processes and users
+# 3. Manage processes and users
 
-##3.1 Listing processes
+## 3.1 Listing processes
 
 ~~~ bash
 # -f = full format
 ps -fu oracle # processes for user oracle
 ~~~
 
-##3.2 Terminating processes
+## 3.2 Terminating processes
 
 ~~~ bash
 # -i = interactive
 killall -i sqlplus
 ~~~
 
-##3.3 Listing logged on users
+## 3.3 Listing logged on users
 
 ~~~ bash
 who
@@ -209,14 +210,14 @@ tty
 pinky # light version of finger
 ~~~
 
-##3.4 Listing last logon
+## 3.4 Listing last logon
 
 ~~~ bash
 last | less
 lastb
 ~~~
 
-##3.5 Limiting the number of user processes
+## 3.5 Limiting the number of user processes
 
 ~~~ bash
 useradd test_user
@@ -229,7 +230,7 @@ test_user hard nproc 2000
 : () { :|:& };:
 ~~~~
 
-##3.6 Viewing how long the server has been running
+## 3.6 Viewing how long the server has been running
 
 ~~~ bash
 uptime
@@ -237,21 +238,21 @@ uptime
 w
 ~~~
 
-##3.7 How long a process has been running
+## 3.7 How long a process has been running
 
 ~~~ bash
 ## check line STIME ( start time ) and TIME (cpu time)
 ps -ef
 ~~~
 
-##3.8 Dispaly your username
+## 3.8 Dispaly your username
 
 ~~~ bash
 id
 who am i
 ~~~
 
-##3.9 Control passwd
+## 3.9 Control passwd
 
 ~~~bash
 passwd oracle
@@ -259,7 +260,7 @@ change -M 60 oracle #passwd will be valid for 60 days
 change -l oracle #verify 
 ~~~
 
-##3.11 sudo
+## 3.11 sudo
 
 ~~~bash
 echo "oracle ALL=(ALL) ALL" >> /etc/sudoers
@@ -268,7 +269,7 @@ echo "oracle ALL=/usr/sbin/groupadd,/usr/sbin/useradd" >> /etc/sudoers
 sudo -l #check what can be run as root
 ~~~
 
-##3.12 user/group
+## 3.12 user/group
 
 ~~~ bash
 groupadd oinstall
@@ -281,9 +282,9 @@ id oracle
 usrdel oracle
 ~~~
 
-#4 Creating and editing files
+# 4 Creating and editing files
 
-##4.1 Creating a file
+## 4.1 Creating a file
 
 |Cmd| Description|
 |----------|-----|
@@ -311,7 +312,7 @@ Useful commands
 |:n|Edit next file|
 |:e!|return to previous saved version|
 
-##4.2 Maneuvering wihting a file
+## 4.2 Maneuvering wihting a file
 
 Navigation commands
 
@@ -324,7 +325,7 @@ Navigation commands
 |H|Go to top of screen|
 |L|Go to bottom of screen|
 
-##4.3 Copying and pasting
+## 4.3 Copying and pasting
 
 |Cmd| Description|
 |----------|-----|
@@ -332,7 +333,7 @@ Navigation commands
 |P|paste above the cursor|
 |D|Delete to the end of current line|
 
-##4.4 Manipulating text
+## 4.4 Manipulating text
 
 |Cmd| Description|
 |----------|-----|
@@ -344,7 +345,7 @@ Navigation commands
 |s|Delete char enter insert mode|
 |S|Delete current line and enter insert mode|
 
-##4.5 Search and replace text
+## 4.5 Search and replace text
 
 |Cmd| Description|
 |----------|-----|
@@ -356,7 +357,7 @@ Navigation commands
 |F<char>|Search backward for char in current line.|
 |;/,    |repeat f search forward or backward|
 
-##4.6 Insert one file into another
+## 4.6 Insert one file into another
 
 |Cmd| Description|
 |----------|-----|
@@ -364,11 +365,11 @@ Navigation commands
 |:0r filename| place file at the begin of existing file|
 |:r !date| insert a command output|
 
-##4.7 Joining lines
+## 4.7 Joining lines
 
 J
 
-##4.13 Creating shorcuts for commands
+## 4.13 Creating shorcuts for commands
 
 |Cmd| Description|
 |----------|-----|
@@ -376,23 +377,23 @@ J
 |:map | print all map definition|
 |:unmap t||
 
-##4.14 Set default editor
+## 4.14 Set default editor
 
 ~~~sh
 export EDITOR=vi
 export VISUAL=$EDITOR
 ~~~
 
-#5 Managing files and directory
+# 5 Managing files and directory
 
-##5.1 Showing the current working directory
+## 5.1 Showing the current working directory
 
 ~~~sh
 pwd # by default don't follow symbolic link, same as
 echo $PWD
 ~~~
 
-##5.2 Changing directory
+## 5.2 Changing directory
 
 You need exec rigth on a folder on target folder.
 
@@ -402,35 +403,35 @@ cd
 cd - # move to previous folder
 ~~~
 
-##5.5 Viewing a list of directories
+## 5.5 Viewing a list of directories
 
 ~~~sh
 ls -l | grep ^d
 ls -p | grep / # -p add / at folder name
-ls -F #add an indicator for filet type
+ls -F #add an indicator for file type
 ~~~
 
-##5.5 Listing files
+## 5.6 Listing files
 
 ~~~sh
 ls -altr
 echo *
 ~~~
 
-##5.9 Change file ownership and gropup membership
+## 5.9 Change file ownership and gropup membership
 
 ~~~sh
-chowm oracle:dba /var/opt/oracle
+chown oracle:dba /var/opt/oracle
 chgrp -R dba *.sql
 ~~~
 
-##5.14 Determining file type
+## 5.14 Determining file type
 
 ~~~sh
 ls -F
 ~~~
 
-##5.15 Compare files
+## 5.15 Compare files
 
 ~~~sh
 sdiff a.sh b.sh
@@ -438,14 +439,14 @@ diff a.sh b.sh > d.diff
 patch a.sh d.diff
 ~~~
 
-##5.17 Copying directories
+## 5.17 Copying directories
 
 ~~~sh
 scp -rp scripts user@host:/home/user/scripts
 rsync -ra --progress scripts user@host:/home/user/scripts
 ~~~
 
-##5.20 Remove files
+## 5.20 Remove files
 
 ~~~sh
 ls *.bak
@@ -453,13 +454,13 @@ echo !$ # !$ = *.bak from previous command
 rm !$ 
 ~~~
 
-##5.23 Finding files
+## 5.23 Finding files
 
 ~~~sh
 find . -name  "alert*.log" 2>/dev/null
 ~~~
 
-##5.24 Finding string in files
+## 5.24 Finding string in files
 
 ~~~sh
 find . -name *.sql | xargs grep -i "create table"
@@ -468,7 +469,7 @@ find . -name *.sql | xargs grep -i "create table"
 find . -name *.sql -exec grep -qil "create table" {} \; -print
 ~~~
 
-##5.25 Finding recently modified files
+## 5.25 Finding recently modified files
 
 |Find time option|Description|
 |----------------|-----------|
@@ -486,13 +487,13 @@ find . -name *.sql -exec grep -qil "create table" {} \; -print
 find . -mnin -20
 ~~~
 
-##5.26 Finding and removing old files
+## 5.26 Finding and removing old files
 
 ~~~sh
 find . -type f -mtime +30 -exec rm -f {} \;
 ~~~
 
-##5.27 Finding the largest file
+## 5.27 Finding the largest file
 
 ~~~sh
 # -ls = print result in ls format 
@@ -500,21 +501,21 @@ find . -type f -mtime +30 -exec rm -f {} \;
 find . -ls | sort -nrk7 | head -5
 ~~~
 
-##5.28 Finding files by size
+## 5.28 Finding files by size
 
 ~~~sh
 # < 200k
 find . -size -200k
 ~~~
 
-##5.29 Sorting by file size
+## 5.29 Sorting by file size
 
 ~~~sh
 ls -alS 
 ls -al | sort -rk5 
 ~~~
 
-##5.30 Find large folders
+## 5.30 Find large folders
 
 ~~~sh
 # -S = don't include subfolders
@@ -524,7 +525,7 @@ du -S . | sort -nr | hear -5
 du -sh ~
 ~~~
 
-##5.31 Truncate on OS file
+## 5.31 Truncate on OS file
 
 ~~~sh
 > x.x
@@ -532,11 +533,12 @@ cat /dev/null > x.x
 cp /dev/null x.x
 ~~~
 
-##5.33 Create a second name for a file
+## 5.33 Create a second name for a file
+
 Create a symbolic link.
 
 ~~~sh
-ln -s file newFile
+ln -s file newLink
 ~~~
 
-#6 Archiving and Compessing files
+# 6 Archiving and Compessing files

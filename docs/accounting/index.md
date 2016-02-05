@@ -21,9 +21,8 @@ For us of special interest are:
 
 - PnL = P/L
 - Cash Flow = C/F
- 
 
-##Balance sheet B/S
+## Balance sheet B/S
 Is a statement of source and usage of funds.
 
 Assets=Liabilities
@@ -39,7 +38,7 @@ Where :
 - LTL = Long term loans
 - CL = Current liabilities = Account payables(creditors) + Short-term loans + Miscellaneous
 
-###Balance sheet terms
+### Balance sheet terms
 
 - TA = Total assets = FA + CA = ( same as ) =  OF + LTL + CL
 - CE = Capital Employed = FA + CA - CL = OF + LTL
@@ -52,7 +51,7 @@ Used to identify the total revenue earned and the total costs incurred over the 
 PnL = B/S2 - B/S1
 PnL = Revenue - Costs = Sales - Operating Costs
 
-###PnL terms
+### PnL terms
 - EBIT – Earnings before interest and tax
 ( Deduct interest -> )
 - EBT – Earnings before tax

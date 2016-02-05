@@ -6,9 +6,9 @@ categories: linux administration
 * toc
 {:toc}
 
-#1. Basic Administration
+# 1. Basic Administration
 
-##1.1 where to start
+## 1.1 where to start
 
 | man section | Content |
 |-------------|----------|
@@ -34,9 +34,9 @@ whereis gcc # searches a broader range of system directories and is independent 
 locate signal.h # consults a precompiled index of the filesystem to locate filenames that match a particular pattern. 
 ~~~
 
-##1.2 scripting and the shell
+## 1.2 scripting and the shell
 
-###1.2.1 Shell basics
+### 1.2.1 Shell basics
 
 ~~~bash
 #set line editing mode
@@ -60,7 +60,7 @@ sort -t: -k3,3 -n /etc/group
 find /etc -name pass* 2>/dev/null | tee /dev/tty | wc -l
 ~~~
 
-###1.2.2 Bash scripting
+### 1.2.2 Bash scripting
 
 ~~~bash
 bash helloworld # execute script in a new instance of bash
@@ -90,7 +90,7 @@ while read line; do
 done
 ~~~
 
-###1.2.3 Regular expressions
+### 1.2.3 Regular expressions
 
 
 | Symbol   | What it matches or does |
@@ -116,9 +116,9 @@ done
 
 
 
-##1.3 Booting and Shutting down
+## 1.3 Booting and Shutting down
 
-###1.3.1 Bootstrapping
+### 1.3.1 Bootstrapping
 
 UNIX systems can boot just enough to run a shell on the system console. 
 This option is traditionally known as booting to single-user mode, recovery mode, or maintenance mode
@@ -132,15 +132,15 @@ A typical bootstrapping process consists of six distinct phases:
 * Administrator intervention (single-user mode only)
 * Execution of system startup scripts
 
-##1.9 Periodic Processes
+## 1.9 Periodic Processes
 
-###1.9.1 Schedule Commands
+### 1.9.1 Schedule Commands
 
 - executed with sh
 - at most 1 crontab per user. Default location /var/spool/cron
 - crontab command notify cron daemon on crontab change. If manually edit crontab send HUP to cron daemon
 
-###1.9.2 Crontab file format
+### 1.9.2 Crontab file format
 
 - minute hour dom month weekday command
 
@@ -153,7 +153,7 @@ Each of the time-related fields may contain
 • A range followed by a slash and a step value, e.g., 1-10/2 (Linux only)
 • A comma-separated list of integers or ranges, matching any value
 
-###1.9.4 Crontab management
+### 1.9.4 Crontab management
 
 ~~~bash
 #set filename as your crontab
@@ -168,11 +168,11 @@ crontab -u bi crontab.new
 
 User how can submit crontabs cron.deny and cron.allow in folder /etc.
 
-###1.9.5 LINUX AND VIXIE-CRON EXTENSIONS
+### 1.9.5 LINUX AND VIXIE-CRON EXTENSIONS
 
 Obeys system crontab entries found in /etc/crontab and in the /etc/cron.d directory
 
-##1.13 Drivers and the Kernel
+## 1.13 Drivers and the Kernel
 
 The kernel creates all the following concepts from lower-level hardware features:
 - Processes (time-sharing, protected address spaces)
@@ -183,9 +183,9 @@ The kernel creates all the following concepts from lower-level hardware features
 - Interprocess communication (pipes and network connections)
 
 
-##3.19 Sharing System Files
+## 3.19 Sharing System Files
 
-###3.19.1 WHAT TO SHARE
+### 3.19.1 WHAT TO SHARE
 
 Filename Function
 /etc/passwd User account information database
@@ -196,7 +196,7 @@ Filename Function
 /etc/sudoers Grants privileges for the sudo command
 /etc/skel/* Holds default configuration files for new home directories
 
-###3.19.2 COPYING FILES AROUND
+### 3.19.2 COPYING FILES AROUND
 
 - The NFS option
 - Push systems vs. pull systems

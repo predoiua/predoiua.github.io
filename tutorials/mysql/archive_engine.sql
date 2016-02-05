@@ -17,9 +17,10 @@ create table d_loc(
 ) engine=ARCHIVE;
 
 
-select sum(salary) salary
+select d_loc.code, sum(salary) salary
 from f
 	join d_loc on f.id_loc = d_loc.id
+group by d_loc.code
 ;
 
 show table status like 'f';
