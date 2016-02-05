@@ -34,8 +34,8 @@ df -h /dev/sda1
 ##1.5 Getting help
 
 ~~~ bash
-man -f cd # same as whatis cp
-man -k cd # search in man for cp word
+man -f cd # same as whatis cd
+man -k cd # search in man for cd word
 man 1p cd
 man find | col -b >find.txt
 ls /bin | xargs whatis | less
