@@ -6,15 +6,15 @@ categories: linux training
 * toc
 {:toc}
 
-#Linux security
+# Linux security
 
-##Launch Docker VM
+## Launch Docker VM
 
 ~~~ bash
 docker run -it --rm centos:6 /bin/bash
 ~~~
 
-##How To SSH
+## How To SSH
 
 ~~~ bash
 #Install

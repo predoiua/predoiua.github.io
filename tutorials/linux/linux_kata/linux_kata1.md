@@ -6,15 +6,15 @@ categories: linux training
 * toc
 {:toc}
 
-#Linux warmup
+# Linux warmup
 
-##Launch Docker VM
+## Launch Docker VM
 
 ~~~ bash
 docker run -it --rm ubuntu:latest /bin/bash
 ~~~
 
-##Record commands and check term capabilities
+## Record commands and check term capabilities
 
 ~~~ bash
 script
@@ -27,7 +27,7 @@ exit #script
 vi typescript
 ~~~
 
-##Manage users and group
+## Manage users and group
 
 ~~~ bash
 tail /etc/passwd
@@ -57,13 +57,13 @@ usermod --shell /bin/bash bi
 #userdel -r bi
 ~~~
 
-##Bash function
+## Bash function
 
 ~~~ bash
 bind -p
 ~~~
 
-##Scripting
+## Scripting
 
 All the following tests are evaluated to 0 == true.
 We can't compare for "<=", use "! >" instead.
@@ -114,7 +114,7 @@ val1 = `fct1 param`
 err ${val1} $?
 ~~~
 
-##Funny
+## Funny
 
 ~~~sh
 > -f

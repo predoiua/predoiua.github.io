@@ -6,9 +6,9 @@ categories: linux training
 * toc
 {:toc}
 
-#Linux networking
+# Linux networking
 
-##DHCP Client
+## DHCP Client
 
 Check if/how DHCP is configured on Debian
 

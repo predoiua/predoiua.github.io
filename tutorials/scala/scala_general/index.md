@@ -6,7 +6,7 @@ categories: java
 * will be replace by toc
 {:toc}
 
-##Map, flatMap
+## Map, flatMap
 
 Based on : http://www.brunton-spall.co.uk/post/2011/12/02/map-map-and-flatmap-in-scala/
 
@@ -23,6 +23,13 @@ l.flatMap(x=>f(x))
 //List[Int] = List(3, 4)
 ~~~
 
-##fold
+## fold
 
-
+~~~
+val l = List(1,2,3,4)
+l.foldLeft(0)( (x,y)=> x+y) // same as ..
+l.foldLeft(0)( _ + _)
+l.foldLeft("x")( _ + _) // => x1234
+l.foldRight(1)( _ * _) 
+l.foldRight("x")( _ + _) // => 1234x
+~~~

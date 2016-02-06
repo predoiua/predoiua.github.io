@@ -6,9 +6,9 @@ categories: scala
 * will be replace by toc
 {:toc}
 
-#Scala for the impatient
+# Scala for the impatient
 
-##1.The Basics A1
+## 1.The Basics A1
 
 - Augmented classes : StringOps, RichInt, RichDouble ..
 - No ++, use val += 1. Reason : Int is immutable
@@ -24,7 +24,7 @@ categories: scala
 3+4 // same as 3+(4)
 ~~~
 
-##2. Control Structures and Functions A1
+## 2. Control Structures and Functions A1
 
 - Scala if statement ~= c ?: expression
 - Type of
@@ -89,7 +89,7 @@ lazy val words = io.Source.fromFile("/usr/share/dict/words").mkString
 
 try { ... } catch { ... } finally { ... }
 
-##3. Array A1
+## 3. Array A1
 
 Key points:
 
@@ -140,7 +140,7 @@ b.mkString(" and ")
 b.mkString("<",",",">")
 ~~~
 
-##4. Maps and Tuples A1
+## 4. Maps and Tuples A1
 
 Key points:
 

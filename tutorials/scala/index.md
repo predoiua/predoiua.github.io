@@ -8,11 +8,11 @@ categories: scala
 
 Martin Odersky
 =============
-All my respect!
+The best :)
 
-#Scala
+# Scala
 
-##SBT
+## SBT
 
 See spark\build for great script for using STB.
 
