@@ -59,6 +59,7 @@ java vv10.test.TestInitialize
 {% raw  %}
 
 //with an anonymous inner class
+// Second new ArrayList<String>() is mandatory for anonymous inner class
 ArrayList<String> list1 = new ArrayList<String>() {{
     add(1);
     add(2);
