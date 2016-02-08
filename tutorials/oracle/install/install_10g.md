@@ -6,10 +6,10 @@ categories: oracle
 * toc
 {:toc}
 
-#Oracle 10g R2 clean on CentOS 5.5
+# Oracle 10g R2 clean on CentOS 5.5
 
 
-##Install required software
+## Install required software
 
 http://www.idevelopment.info/data/Oracle/DBA_tips/Linux/LINUX_15.shtml
 
@@ -126,7 +126,7 @@ echo redhat-4 >>  /etc/redhat-release
 ## pirut -> search libXp -> install all of them
 ~~~~
 
-##Install Oracle software
+## Install Oracle software
 
 ~~~bash
 ###### as oracle #########
@@ -140,7 +140,7 @@ chmod -R 775 /home/oracle/oracle/product/10.2.0/db_2
 runInstall
 ~~~
 
-##Configure, install DB
+## Configure, install DB
 
 ~~~bash
 ###### as root #########
@@ -170,7 +170,7 @@ dbca
 ~~~~
 
 
-##Linux check before install
+## Linux check before install
 
 ### Check
 
@@ -199,7 +199,7 @@ uname -r
 # rpm -q package_name
 ~~~~
 
-###Users and groups
+### Users and groups
 
 ~~~bash
 #The Oracle Inventory group (typically, oinstall)
@@ -214,7 +214,7 @@ id oracle
 #usermod -g oinstall -G dba oracle
 ~~~
 
-###Others
+### Others
 
 ~~~bash
 # Check semaphores

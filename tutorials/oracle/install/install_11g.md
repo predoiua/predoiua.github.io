@@ -6,11 +6,11 @@ categories: oracle
 * toc
 {:toc}
 
-#Install Oracle 11g on Centos
+# Install Oracle 11g on Centos
 
-##Run as root
+## Run as root
 
-###Linux parameters
+### Linux parameters
 
 ~~~bash
 cp /etc/sysctl.conf /etc/sysctl.conf.bak
@@ -31,7 +31,7 @@ mv /etc/sysctl.conf.bak /etc/sysctl.conf.10g
 diff /etc/sysctl.conf /etc/sysctl.conf.10g
 ~~~
 
-###Supplementary packages compare with Oracle 10
+### Supplementary packages compare to Oracle 10
 
 ~~~bash
 rpm -qa --queryformat "%{NAME}-%{VERSION}-%{RELEASE} (%{ARCH})\n"| grep pdksh
@@ -47,16 +47,16 @@ cp /usr/local/bin/coraenv /usr/local/bin/coraenv.10g
 cp /etc/oratab /etc/oratab.10g
 ~~~
 
-##Run as oracle
+## Run as oracle
 
-###Install Oracle 11g
+### Install Oracle 11g
 
 ~~~bash
 runInstall
 #select software only
 ~~~
 
-###Create DB
+### Create DB
 
 ~~~bash
 #comment 10g line, add 11g line

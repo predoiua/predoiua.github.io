@@ -6,9 +6,9 @@ categories: oracle
 * will be replace by toc
 {:toc}
 
-#Getting started
+# Getting started
 
-##ORA-01410 – Invalid rowid
+## ORA-01410 – Invalid rowid
 
 Run in 1st sqlplus session:
 
@@ -34,7 +34,7 @@ insert into x values ( 'b' );
 commit;
 ~~~~
 
-###Using objects
+### Using objects
 
 http://stackoverflow.com/questions/1020348/oracle-select-from-record-datatype
 
@@ -70,7 +70,7 @@ drop type myobj;
 /
 ~~~
 
-###Delete from views
+### Delete from views
 
 Outer joins can lead to nasty errors. ( Tested in 10 and 11)
 
@@ -116,7 +116,7 @@ delete from x where rowid in (
 );
 ~~~
 
-###Read sql data from bash
+### Read sql data from bash
 
 ~~~
 #!/bin/bash
@@ -138,7 +138,7 @@ FIN
 )
 ~~~
 
-###Execute sql commands from bash
+### Execute sql commands from bash
 
 ~~~bash
 #!/bin/bash

@@ -6,11 +6,11 @@ categories: oracle
 * toc
 {:toc}
 
-#To Know
+# To Know
 
-##Server administration
+## Server administration
 
-###Automatically start Oracle 10g on CentOS 5
+### Automatically start Oracle 10g on CentOS 5
 
 ~~~bash
 1. vi /etc/oratab. At the end should be Y
@@ -50,7 +50,13 @@ chkconfig --level 2345 oracle on
 chkconfig --list oracle
 ~~~
 
-###Import data with DB pump but change data file location
+### Data Pump folder
+
+~~~sql
+SELECT directory_path FROM dba_directories WHERE directory_name = 'DATA_PUMP_DIR';
+~~~
+
+### Import data with DB pump but change data file location
 
 Tablespaces have to be moved in a distinct step.
 I was unable to create both users and tablespaces in same step.
@@ -63,7 +69,7 @@ remap_datafile=\"/tmp/test01.dbf\":\"/home/oracle/oradata_11g/test01.dbf\"
 http://www.dba-oracle.com/t_rman_173_impdp_remap.htm
 
 
-###Check if an user is connected in Oracle
+### Check if an user is connected in Oracle
 
 ~~~sql
 select s.sid, s.serial#, s.status, p.spid 
@@ -72,14 +78,14 @@ where s.username = 'myuser'
 and p.addr (+) = s.paddr;
 ~~~
 
-###Create DB link
+### Create DB link
 
 ~~~sql
 DROP PUBLIC DATABASE LINK remote; 
 CREATE PUBLIC DATABASE LINK remote CONNECT TO scott IDENTIFIED BY tiger USING 'remote'; 
 ~~~
 
-###Modify column data type
+### Modify column data type
 
 ~~~sql
 alter table table_name
@@ -88,27 +94,7 @@ modify (
 );
 ~~~
 
-##SQL
-
-###Order : asc = default order
-
-~~~ sql
-select * from DBA_DB_LINKS order by CREATED;
---- same as
-select * from DBA_DB_LINKS order by CREATED ASC;
-~~~
-
-###Operations over DB link restriction
-
-- no DML
-
-###SQL Plus
-
-~~~
-WHENEVER SQLERROR EXIT
-~~~
-
-###Increase process limit
+### Increase process limit
 
 needs DB restart
 
@@ -117,3 +103,31 @@ show parameter process
 alter system set processes=300 scope=spfile;
 alter system set sessions=300 scope=spfile;
 ~~~
+
+### Charset 
+
+~~~sql
+SELECT value$ FROM sys.props$ WHERE name = 'NLS_CHARACTERSET';
+SELECT * FROM NLS_DATABASE_PARAMETERS;
+~~~
+
+## SQL
+
+### Order : asc = default order
+
+~~~ sql
+select * from DBA_DB_LINKS order by CREATED;
+--- same as
+select * from DBA_DB_LINKS order by CREATED ASC;
+~~~
+
+### Operations over DB link restriction
+
+- no DML
+
+### SQL Plus
+
+~~~
+WHENEVER SQLERROR EXIT
+~~~
+

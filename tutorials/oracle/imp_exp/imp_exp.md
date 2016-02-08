@@ -6,9 +6,9 @@ categories: oracle
 * toc
 {:toc}
 
-#Oracle Data Pump (expdp)
+# Oracle Data Pump (expdp)
 
-##Check what to export
+## Check what to export
 
 ~~~sql
 =========== check users to export ====
@@ -40,9 +40,9 @@ where df.tablespace_name = tu.tablespace_name ;
 ============================
 ~~~
 
-##Export
+## Export
 
-###1. Configure data pump
+### 1. Configure data pump
 
 ~~~bash
 #as oracle in bash
@@ -51,7 +51,7 @@ mkdir -p /home/oracle/data_pump
 CREATE or REPLACE DIRECTORY data_pump_dir AS '/home/oracle/data_pump';
 ~~~
 
-###2. Create export
+### 2. Create export
 
 I need to create 2 exports: one for tablespace specifications, one for schemas
 
@@ -77,7 +77,7 @@ expdp system/manager \
     dumpfile=10g.dmp
 ~~~~
 
-##Import
+## Import
 
 ~~~sql
 CREATE or REPLACE DIRECTORY data_pump_dir AS '/home/oracle/data_pump';
