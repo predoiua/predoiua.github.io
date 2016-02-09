@@ -58,8 +58,40 @@ LocalDate.of(2016, 1, 31).plusMonths(1) ==  LocalDate.of(2016, 2, 28)
 
 ### 5.3 Date Adjusters
 
+Syayic methods.
 TemporalAdjusters for something like "the first Tuesday of every month"
 
+~~~java
+TemporalAdjuster NEXT_WORKDAY = TemporalAdjusters.ofDateAdjuster(w -> {
+	LocalDate result = w; // No cast
+	do {
+		result = result.plusDays(1);
+	} while (result.getDayOfWeek().getValue() >= 6);
+	return result;
+});
+~~~
+
+### 5.4 Local Time
+
+A LocalTime represents a time of day, such as 15:30:00.
+
+~~~java
+LocalTime rightNow = LocalTime.now();
+LocalTime bedtime = LocalTime.of(22, 30); // or LocalTime.of(22, 30, 0)
+~~~
+
+5.5 Zoned Time
+
+Java uses the IANA database
+https://www.iana.org/time-zones
+Each time zone has an ID, such as America/New_York or Europe/Berlin .
+
+~~~java
+ZonedDateTime apollo11launch = ZonedDateTime.of(1969, 7, 16, 9, 32, 0, 0,ZoneId.of("America/New_York"));
+ZonedDateTime nextMeeting = meeting.plus(Period.ofDays(7)); // OK
+~~~
+
+### 5.6 Formatting and Parsing
 
 ## 7.The Nashorn JavaScript Engine
 

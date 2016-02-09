@@ -99,7 +99,7 @@ modify (
 needs DB restart
 
 ~~~
-show parameter process
+show parameter process;
 alter system set processes=300 scope=spfile;
 alter system set sessions=300 scope=spfile;
 ~~~
