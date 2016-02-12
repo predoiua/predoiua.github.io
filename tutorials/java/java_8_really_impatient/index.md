@@ -8,6 +8,8 @@ categories: java
 
 # Java 8 for the really impatient
 
+## 1. Lambda Expressions
+
 ## 5.The New Date and Time API
 
 - All java.time objects are immutable.
@@ -92,6 +94,35 @@ ZonedDateTime nextMeeting = meeting.plus(Period.ofDays(7)); // OK
 ~~~
 
 ### 5.6 Formatting and Parsing
+
+The DateTimeFormatter class provides three kinds of formatters to print a date/time value:
+- Predefined standard formatters
+- Locale-specific formatters
+- Formatters with custom patterns
+
+~~~java
+DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG);
+String formatted = formatter.format(apollo11launch); // July 16, 1969 9:32:00 AM EDT
+formatted = formatter.withLocale(Locale.FRENCH).format(apollo11launch); // 16 juillet 1969 09:32:00 EDT
+~~~
+
+### 5.7 Interoperating with Legacy Code
+
+Instant class is a close analog to java.util.Date.
+ZonedDateTime is a close analog to java.util.GregorianCalendar.
+
+~~~java
+//Instant - java.util.Date
+Date.from(instant); date.toInstant()
+//ZonedDateTime - java.util.GregorianCalenda
+GregorianCalendar.from(zonedDateTime); cal.toZonedDateTime()
+//DateTimeFormatter - java.text.DateFormat
+formatter.toFormat()
+//java.util.TimeZone - ZoneId
+Timezone.getTimeZone(id); timeZone.toZoneId()
+//java.nio.file.attribute.FileTime - Instant
+FileTime.from(instant); fileTime.toInstant()
+~~~
 
 ## 7.The Nashorn JavaScript Engine
 
