@@ -10,6 +10,26 @@ categories: java
 
 ## 1. Lambda Expressions
 
+- A lambda expression is a block of code with parameters.
+- Use a lambda expression whenever you want a block of code executed at a later point in time.
+- Lambda expressions can be converted to functional interfaces.
+- Lambda expressions can access effectively final variables from the enclosing scope.
+- Method and constructor references refer to methods or constructors without invoking them.
+- You can now add default and static methods to interfaces that provide concrete implementations.
+- You must resolve any conflicts between default methods from multiple interfaces.
+
+### 1.1 Why Lambdas?
+
+### 1.2 The Syntax of Lambda Expressions
+
+~~~java
+(String first, String second)-> Integer.compare(first.length(), second.length())
+() -> { for (int i = 0; i < 1000; i++) doWork(); }
+Comparator<String> comp = (first, second) -> Integer.compare(first.length(), second.length());
+~~~
+
+### 1.3 Functional Interfaces
+
 ## 5.The New Date and Time API
 
 - All java.time objects are immutable.
