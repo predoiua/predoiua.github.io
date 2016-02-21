@@ -30,6 +30,12 @@ Comparator<String> comp = (first, second) -> Integer.compare(first.length(), sec
 
 ### 1.3 Functional Interfaces
 
+- functional interface = interface with a single abstract method
+- conversion to a functional interface is the only thing that you can do with a lambda expression in Java
+
+### 1.4 Method References
+
+
 ## 5.The New Date and Time API
 
 - All java.time objects are immutable.
