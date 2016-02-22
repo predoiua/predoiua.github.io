@@ -35,6 +35,19 @@ Comparator<String> comp = (first, second) -> Integer.compare(first.length(), sec
 
 ### 1.4 Method References
 
+~~~
+button.setOnAction(event -> System.out.println(event));
+button.setOnAction(System.out::println);
+(x, y) -> x.compareToIgnoreCase(y)
+~~~
+
+method reference
+- object :: instanceMethod
+- Class :: staticMethod
+- Class :: instanceMethod
+- super::method
+
+### 1.5 Constructor References
 
 ## 5.The New Date and Time API
 
