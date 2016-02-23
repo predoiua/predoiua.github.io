@@ -49,6 +49,39 @@ method reference
 
 ### 1.5 Constructor References
 
+- like method references, method = new
+
+~~~
+List<String> labels = Arrays.asList("one", "two", "three");
+Stream<Button> stream = labels.stream().map(Button::new);
+List<Button> buttons = stream.collect(Collectors.toList());
+Button[] buttons = stream.toArray(Button[]::new);
+~~~
+
+### 1.6 Variable Scope
+
+Lambda:
+1. A block of code
+2. Parameters
+3. Values for the free variables, that is, the variables that are not parameters and not defined inside the code
+
+Obs: params in the following code are captured by lamba, and exists after method return = closure
+
+~~~
+public static void repeatMessage(String text, int count) {
+	Runnable r = () -> {
+		for (int i = 0; i < count; i++) {
+			System.out.println(text);
+			Thread.yield();
+		}
+	};
+	new Thread(r).start();
+}
+~~~
+
+### 1.7 Default Methods
+
+
 ## 5.The New Date and Time API
 
 - All java.time objects are immutable.
