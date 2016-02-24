@@ -81,6 +81,39 @@ public static void repeatMessage(String text, int count) {
 
 ### 1.7 Default Methods
 
+default methods = interface methods with concrete implementations
+Method resolving rules:
+- Superclasses win. If a superclass provides a concrete method, default methods with the same name and parameter types are simply ignored.
+- Interfaces clash. If a superinterface provides a default method, and another interface supplies a method with the same name and parameter types (default or not), then you must resolve the conflict by overriding that method
+
+~~~java8
+list.forEach(System.out::println);
+
+interface Person {
+	long getId();
+	default String getName() { 
+		return "John Q. Public"; 
+	}
+}
+~~~
+
+### 1.8 Static Methods in Interfaces
+
+
+Up to now, it has been common to place static methods in companion classes.
+You find pairs of interfaces and utility classes such as Collection / Collections or Path / Paths in the standard library.
+
+~~~java8 
+public inerface Path {
+	public static Path get(String first, String... more) {
+		return FileSystems.getDefault().getPath(first, more);
+	}
+}
+Comparator.comparing(Person::name)
+~~~
+
+## 2.The Stream API
+
 
 ## 5.The New Date and Time API
 
