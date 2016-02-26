@@ -248,3 +248,40 @@ var input = new java.util.Scanner(new java.net.URL('http://horstmann.com').openS
 input.useDelimiter('$')
 var contents = input.next()
 ~~~
+
+## 8.Miscellaneous Goodies
+
+### 8.1 Strings
+
+~~~java
+String joined = String.join("/", "usr", "local", "bin"); // vs String.split
+~~~
+
+### 8.2 Number Classes
+
+Reductor funtion : 
+- min, max, sum in Short , Integer , Long , Float , and Double.
+- logicalAnd , logicalOr , and logicalXor in Boolean
+
+Integer types now support unsigned arithmetic.
+Byte.toUnsignedInt(b)
+
+The primary reason to use unsigned numbers is if you work with file formats or network protocols that require them.
+
+### 8.3 New Mathematical Functions
+
+The Math class provides several methods for “exact” arithmetic that throw an exception when a result overflows.
+Work with int/long numbers.
+( add | subtract | multiply | increment | decrement | negate )Exact
+
+~~~java
+Math.multiplyExact(100000, 100000)
+~~~
+
+floorMod and floorDiv to deal with negative %.
+
+~~~java
+((position + adjustment) % 12 + 12) % 12
+~~~
+
+### 8.4 Collections
