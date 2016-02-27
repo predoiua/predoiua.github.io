@@ -285,3 +285,37 @@ floorMod and floorDiv to deal with negative %.
 ~~~
 
 ### 8.4 Collections
+
+- support for stream
+
+### 8.4.1 Methods Added to Collection Classes
+
+- removeIf opposite of filter
+- List interface has a replaceAll which is an in-place equivalent of map
+
+- Iterable forEach
+- Collection removeIf
+- List replaceAll, sort
+- Map forEach, replace, replaceAll, remove(key, value) (removes only if key mapped to value), putIfAbsent, compute, computeIf(Absent|Present), merge
+- Iterator forEachRemaining
+- BitSet stream
+
+### 8.4.2 Comparators
+
+~~~
+Arrays.sort(people, Comparator.comparing(Person::getName));
+Arrays.sort(people,Comparator.comparing(Person::getLastName).thenComparing(Person::getFirstName));
+Arrays.sort(people, Comparator.comparingInt(p -> p.getName().length()));
+~~~
+
+### 8.4.3 The Collections Class
+
+Checked collection that throw exception if you try to add wrong type.
+emptySorted ( Set | Map )
+
+~~~
+CheckedQueue(new LinkedList<Path>, Path.class)
+~~~
+
+### 8.5 Working with Files
+
