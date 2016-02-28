@@ -319,3 +319,55 @@ CheckedQueue(new LinkedList<Path>, Path.class)
 
 ### 8.5 Working with Files
 
+### 8.5.1 Streams of Lines
+
+~~~
+try (Stream<String> lines = Files.lines(path)) {
+	Optional<String> passwordEntry = lines.filter(s -> s.contains("password")).findFirst();
+}
+try (Stream<String> filteredLines = Files.lines(path).onClose(() -> System.out.println("Closing")).filter(s -> s.contains("password"))) { 
+}
+try (BufferedReader reader= new BufferedReader(new InputStreamReader(url.openStream()))) {
+	Stream<String> lines = reader.lines();
+}
+~~~
+
+### 8.5.2 Streams of Directory Entries
+
+Since reading a directory involves a system resource that needs to be closed, you should use a try block:
+
+~~~
+try (Stream<Path> entries = Files.list(pathToDirectory)) {
+}
+try (Stream<Path> entries = Files.walk(pathToRoot)) {
+	// Contains all descendants, visited in depth-first order
+}
+~~~
+
+### 8.5.3 Base64 Encoding
+
+The Base64 encoding uses 64 characters to encode six bits of information:
+- 26 uppercase letters A . . . Z
+- 26 lowercase letters a . . . z
+- 10 digits 0 . . . 9
+- 2 symbols, + and / (basic) or - and _ (URL- and filename-safe variant
+
+MIME standard used for email requires a "\r\n" line break every 76 characters.
+
+~~~java
+Base64.Encoder encoder = Base64.getEncoder();
+String original = username + ":" + password;
+String encoded = encoder.encodeToString(original.getBytes(StandardCharsets.UTF_8));
+~~~
+
+Wrap an output stream.
+
+~~~
+Path originalPath = ..., encodedPath = ...;
+Base64.Encoder encoder = Base64.getMimeEncoder();
+try (OutputStream output = Files.newOutputStream(encodedPath)) {
+	Files.copy(originalPath, encoder.wrap(output));
+}
+~~~
+
+### 8.6 Annotations
