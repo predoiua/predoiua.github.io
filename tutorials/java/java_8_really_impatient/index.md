@@ -104,7 +104,7 @@ Up to now, it has been common to place static methods in companion classes.
 You find pairs of interfaces and utility classes such as Collection / Collections or Path / Paths in the standard library.
 
 ~~~java8 
-public inerface Path {
+public interface Path {
 	public static Path get(String first, String... more) {
 		return FileSystems.getDefault().getPath(first, more);
 	}
@@ -114,6 +114,52 @@ Comparator.comparing(Person::name)
 
 ## 2.The Stream API
 
+- Iterators imply a specific traversal strategy and prohibit efficient concurrent execution.
+- You can create streams from collections, arrays, generators, or iterators.
+- Use filter to select elements and map to transform elements.
+- Other operations for transforming streams include limit , distinct , and sorted .
+- To obtain a result from a stream, use a reduction operator such as count , max , min , findFirst , or findAny . Some of these methods return an Optional value.
+- The Optional type is intended as a safe alternative to working with null values.
+- To use it safely, take advantage of the ifPresent and orElse methods.
+- You can collect stream results in collections, arrays, strings, or maps.
+- The groupingBy and partitioningBy methods of the Collectors class allow you to split the contents of a stream into groups, and to obtain a result for each group.
+- There are specialized streams for the primitive types int , long , and double .
+- When you work with parallel streams, be sure to avoid side effects, and consider giving up ordering constraints
+- You need to be familiar with a small number of functional interfaces in order to use the stream library.
+
+### 2.1 From Iteration to Stream Operations
+
+Stream vs collections:
+1. A stream does not store its elements. They may be stored in an underlying collection or generated on demand.
+2. Stream operations don’t mutate their source. Instead, they return new streams that hold the result.
+3. Stream operations are lazy when possible.
+
+Stages in stream processing:
+1. You create a stream
+2. You specify intermediate operations for transforming the initial stream into others, in one or more steps.
+3. You apply a terminal operation to produce a result. Afterwards, the stream can no longer be used.
+
+~~~
+long count = words.stream().filter(w -> w.length() > 12).count();
+~~~
+
+### 2.2 Stream Creation
+
+~~~
+Stream<String> song = Stream.of("gently", "down", "the", "stream");
+Arrays.stream(array, from, to);
+Stream<String> silence = Stream.empty();
+~~~
+
+Infinite streams:
+
+~~~
+Stream<String> echos = Stream.generate(() -> "Echo");
+Stream<Double> randoms = Stream.generate(Math::random);
+Stream<BigInteger> integers= Stream.iterate(BigInteger.ZERO, n -> n.add(BigInteger.ONE));
+Stream<String> words= Pattern.compile("[\\P{L}]+").splitAsStream(contents);
+~~~
+### 2.3 The filter , map , and flatMap Methods
 
 ## 5.The New Date and Time API
 
