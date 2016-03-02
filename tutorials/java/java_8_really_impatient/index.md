@@ -159,7 +159,85 @@ Stream<Double> randoms = Stream.generate(Math::random);
 Stream<BigInteger> integers= Stream.iterate(BigInteger.ZERO, n -> n.add(BigInteger.ONE));
 Stream<String> words= Pattern.compile("[\\P{L}]+").splitAsStream(contents);
 ~~~
+
 ### 2.3 The filter , map , and flatMap Methods
+
+Suppose you have a generic type G (such as Stream) and functions f from some type T to G<U> and g from U to G<V>.
+Then you can compose them, that is, first apply f and then g, by using flatMap.
+This is a key idea in the theory of monads
+
+### 2.4 Extracting Substreams and Combining Streams
+
+~~~
+Stream<Double> randoms = Stream.generate(Math::random).limit(100);
+Stream<String> words = Stream.of(contents.split("[\\P{L}]+")).skip(1);
+Stream<Character> combined = Stream.concat(characterStream("Hello"), characterStream("World"));
+Object[] powers = Stream.iterate(1.0, p -> p * 2).peek(e -> System.out.println("Fetching " + e)).limit(20).toArray();
+~~~
+
+### 2.5 Stateful Transformations
+
+The Collections.sort method sorts a collection in place, whereas Stream.sorted returns a new sorted stream.
+
+~~~
+Stream<String> uniqueWords = Stream.of("merrily", "merrily", "merrily", "gently").distinct();
+Stream<String> longestFirst = words.sorted(Comparator.comparing(String::length).reversed())
+~~~
+
+### 2.6 Simple Reductions
+
+Reductions are terminal operations. After a terminal operation has been applied, the stream ceases to be usable.
+
+~~~
+Optional<String> largest = words.max(String::compareToIgnoreCase);
+if (largest.isPresent())
+	System.out.println("largest: " + largest.get());
+Optional<String> startsWithQ = words.filter(s -> s.startsWith("Q")).findFirst();
+boolean aWordStartsWithQ = words.parallel().anyMatch(s -> s.startsWith("Q"));
+~~~
+
+### 2.7 The Optional Type
+
+~~~
+Optional<T> optionalValue = ...;
+optionalValue.get().someMethod() // same as ..
+T value = ...;
+value.someMethod();
+if (optionalValue.isPresent()) optionalValue.get().someMethod(); // same as ..
+if (value != null) value.someMethod();
+~~~
+
+#### 2.7.1 Working with Optional Values
+
+The key to using Optional effectively is to use a method that either consumes the correct value or produces an alternative.
+
+~~~
+optionalValue.ifPresent(v -> Process v);
+optionalValue.ifPresent(v -> results.add(v));
+optionalValue.ifPresent(results::add);
+Optional<Boolean> added = optionalValue.map(results::add);
+String result = optionalString.orElse("default");
+String result = optionalString.orElseGet(() -> System.getProperty("user.dir"));
+String result = optionalString.orElseThrow(NoSuchElementException::new);
+~~~
+
+#### 2.7.2 Creating Optional Values
+
+~~~
+Optional.of(result)
+Optional.empty()
+Optional.ofNullable(obj)
+~~~
+
+#### 2.7.3 Composing Optional Value Functions with flatMap
+
+f -> Optional<T>
+g -> Optional<U>
+Optional<U> = s.f().flatMap(T::g);
+
+~~~
+Double result = Optional.of(-4.0).flatMap(Test::inverse).flatMap(Test::squareRoot);
+~~~
 
 ## 5.The New Date and Time API
 
