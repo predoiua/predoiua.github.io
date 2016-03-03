@@ -239,6 +239,41 @@ Optional<U> = s.f().flatMap(T::g);
 Double result = Optional.of(-4.0).flatMap(Test::inverse).flatMap(Test::squareRoot);
 ~~~
 
+### 2.8 Reduction Operations
+
+~~~
+Stream<Integer> values = ...;
+Optional<Integer> sum = values.reduce((x, y) -> x + y)
+values.reduce(Integer::sum)
+Integer sum = values.reduce(0, (x, y) -> x + y)
+~~~
+
+### 2.9 Collecting Results
+
+~~~
+String[] result = words.toArray(String[]::new);
+// words.toArray() has type Object[]
+
+HashSet<String> result = stream.collect(HashSet::new, HashSet::add, HashSet::addAll);
+
+List<String> result = stream.collect(Collectors.toList());
+Set<String> result = stream.collect(Collectors.toSet());
+TreeSet<String> result = stream.collect(Collectors.toCollection(TreeSet::new));
+
+String result = stream.collect(Collectors.joining(", "));
+
+IntSummaryStatistics summary = words.collect(Collectors.summarizingInt(String::length));
+
+stream.forEach(System.out::println);
+~~~
+
+### 2.10 Collecting into Maps
+
+~~~
+Map<Integer, String> idToName = people.collect(Collectors.toMap(Person::getId, Person::getName));
+~~~
+
+### 2.11 Grouping and Partitioning
 ## 5.The New Date and Time API
 
 - All java.time objects are immutable.
