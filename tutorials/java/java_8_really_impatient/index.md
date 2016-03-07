@@ -274,6 +274,38 @@ Map<Integer, String> idToName = people.collect(Collectors.toMap(Person::getId, P
 ~~~
 
 ### 2.11 Grouping and Partitioning
+
+Possible processing for grouping:
+- count
+- set
+- summing
+- min/max
+
+~~~
+Map<String, List<Locale>> countryToLocales = locales.collect( Collectors.groupingBy(Locale::getCountry));
+Map<Boolean, List<Locale>> englishAndOtherLocales = locales.collect(Collectors.partitioningBy(l -> l.getLanguage().equals("en")));
+List<Locale>> englishLocales = englishAndOtherLocales.get(true);
+Map<String, Set<Locale>> countryToLocaleSet = locales.collect(groupingBy(Locale::getCountry, toSet()));
+Map<String, Long> countryToLocaleCounts = locales.collect(groupingBy(Locale::getCountry, counting()));
+~~~
+
+### 2.12 Primitive Type Streams
+
+- store primitive type, no wrapping
+- IntStream and DoubleStream
+
+~~~
+IntStream stream = IntStream.of(1, 1, 2, 3, 5);
+IntStream zeroToNinetyNine = IntStream.range(0, 100); // Upper bound is excluded
+IntStream zeroToHundred = IntStream.rangeClosed(0, 100); // Upper bound is included
+~~~
+
+### 2.13 Parallel Streams
+
+~~~
+Map<String, List<String>> result = cities.parallel().collect(Collectors.groupingByConcurrent(City::getState));
+~~~
+
 ## 5.The New Date and Time API
 
 - All java.time objects are immutable.
