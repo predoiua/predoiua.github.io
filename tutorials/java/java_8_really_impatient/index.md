@@ -99,7 +99,6 @@ interface Person {
 
 ### 1.8 Static Methods in Interfaces
 
-
 Up to now, it has been common to place static methods in companion classes.
 You find pairs of interfaces and utility classes such as Collection / Collections or Path / Paths in the standard library.
 
@@ -306,7 +305,31 @@ IntStream zeroToHundred = IntStream.rangeClosed(0, 100); // Upper bound is inclu
 Map<String, List<String>> result = cities.parallel().collect(Collectors.groupingByConcurrent(City::getState));
 ~~~
 
-## 5.The New Date and Time API
+### 2.14 Functional Interfaces
+
+Predicate = function returning a boolean.
+
+~~~
+Stream<T> filter(Predicate<\? super T> predicate)
+public interface Predicate {
+	boolean test(T argument);
+}
+~~~
+
+Functional Interfaces Used in the Stream API
+- Supplier<T>
+- Consumer<T>
+- BiConsumer<T, U>
+- Predicate<T>
+- Function<T, R>
+- BiFunction<T, U, R>
+- UnaryOperator<T>
+- BinaryOperator<T>
+
+## 3. Programming with Lambdas
+
+
+## 5. The New Date and Time API
 
 - All java.time objects are immutable.
 - An Instant is a point on the time line (similar to a Date ).
@@ -340,7 +363,7 @@ Kinds of human time in the new Java API:
 - local date/time
 - zoned time
 
-Zoned date/time =a precise instant on the time line eg.July 16, 1969, 09:32:00 EDT
+Zoned date/time = a precise instant on the time line eg.July 16, 1969, 09:32:00 EDT
 LocalDate = months starts form 1. ( unlike util.Date where first month = 0)
 For calculation use LocalDate or Instant.
 Period = LocalDate difference.
