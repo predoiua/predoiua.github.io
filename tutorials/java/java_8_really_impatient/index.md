@@ -328,6 +328,32 @@ Functional Interfaces Used in the Stream API
 
 ## 3. Programming with Lambdas
 
+key points:
+- main reason for using a lambda expression is to defer the execution of the code
+- When a lambda expression is executed, make sure to provide any required data as inputs
+- Choose one of the existing functional interfaces if you can
+- It is often useful to write methods that return an instance of a functional interface
+- When you work with transformations, consider how you can compose them
+- To compose transformations lazily, you need to keep a list of all pending transformations and apply them in the end
+
+### 3.1 Deferred Execution
+
+The point of all lambdas is deferred execution.
+
+Running code only when necessary is a use case for lambdas. The standard idiom is to wrap the code in a no-arg lambda:
+
+~~~
+logger.info("x: " + x + ", y: " + y);
+() -> "x: " + x + ", y: " + y
+public static void info(Logger logger, Supplier<String> message) {
+	if (logger.isLoggable(Level.INFO))
+		logger.info(message.get());
+}
+~~~
+
+### 3.2 Parameters of Lambda Expressions
+
+### 3.3 Choosing a Functional Interface
 
 ## 5. The New Date and Time API
 
