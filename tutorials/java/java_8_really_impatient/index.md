@@ -355,6 +355,31 @@ public static void info(Logger logger, Supplier<String> message) {
 
 ### 3.3 Choosing a Functional Interface
 
+Common Functional Interfaces
+
+|Functional Interface|Abstract Method Name|Other methods|
+|Runnable | run ||
+|Supplier<T>|get||
+|Consumer<T>|accept|chain|
+|BiConsumer<T, U>|accept|chain|
+|Function<T, R>|apply|compose,andThen,identity|
+|BiFunction<T, U,R>|apply|andThen|
+|UnaryOperator<T>|apply|compose,andThen,identity|
+|BiOperator<T>|apply|andThen|
+|Predicate<T>|test|and, or,negate,isEqual|
+|BiPredicate<T,U>|test|and, or,negate|
+
+### 3.4 Returning Functions
+
+~~~
+public static UnaryOperator<Color> brighten(double factor) {
+	return c -> c.deriveColor(0, 1, factor, 1);
+}
+Image brightenedImage = transform(image, brighten(1.2));
+~~~
+
+### 3.5 Composition
+
 ## 5. The New Date and Time API
 
 - All java.time objects are immutable.
