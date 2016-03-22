@@ -380,6 +380,42 @@ Image brightenedImage = transform(image, brighten(1.2));
 
 ### 3.5 Composition
 
+### 3.6 Laziness
+
+### 3.7 Parallelizing Operations
+
+### 3.8 Dealing with Exceptions
+
+### 3.9 Lambdas and Generics
+
+reading is covariant (subtypesare okay)
+writing is contravariant (supertypes are okay)
+
+~~~
+String[] result = words.toArray(String[]::new);
+~~~
+
+function arguments are always contravariant
+return types always covariant
+
+~~~
+void forEach(Consumer<? super T> action)
+Stream<T> filter(Predicate<? super T> predicate)
+<R> Stream<R> map(Function<? super T, ? extends R> mapper)
+~~~
+
+### 3.10 Monadic Operations
+
+G<T> = List<T>, Optional<T>, Future<T>
+T -> U , or a Function<T, U>
+
+I want to apply such function to G<T>.
+By tradition, this operation is usually called map.
+There is a map method for Stream and Optional.
+
+Extract value from G<T>
+This operation has traditionally been called flatMap .
+
 ## 5. The New Date and Time API
 
 - All java.time objects are immutable.
