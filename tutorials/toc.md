@@ -13,3 +13,6 @@
 
 ### Algorithms
 - [Cracking](../tutorials/algorithm/cracking_the_coding_interview/)
+
+### Oracle
+- [Architecture](../tutorials/oracle/expert_oracle_database_architecture/)
