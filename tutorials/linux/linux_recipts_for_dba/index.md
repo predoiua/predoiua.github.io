@@ -245,7 +245,7 @@ w
 ps -ef
 ~~~
 
-## 3.8 Dispaly your username
+## 3.8 Display your username
 
 ~~~ bash
 id
@@ -312,7 +312,7 @@ Useful commands
 |:n|Edit next file|
 |:e!|return to previous saved version|
 
-## 4.2 Maneuvering wihting a file
+## 4.2 Maneuvering within a file
 
 Navigation commands
 
