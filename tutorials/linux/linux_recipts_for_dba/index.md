@@ -6,7 +6,7 @@ categories: linux
 * will be replace by toc
 {:toc}
 
-# Getting started
+# 1. Getting started
 
 ## 1.2 Connect to server
 -l = user name

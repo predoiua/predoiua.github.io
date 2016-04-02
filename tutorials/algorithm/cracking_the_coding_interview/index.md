@@ -6,13 +6,13 @@ categories: algorithm
 * will be replace by toc
 {:toc}
 
-#Questions
+# Questions
 
-##Data Structures
+## Data Structures
 
-###Arrays and Strings
+### Arrays and Strings
 
-####1.1 Implement an algorithm to determine if a string has all unique characters.
+#### 1.1 Implement an algorithm to determine if a string has all unique characters.
 
 ~~~ bash
 #!/bin/bash
@@ -26,11 +26,11 @@ else
 fi
 ~~~
 
-##Aditional Review Questions
+## Aditional Review Questions
 
-###Moderate
+### Moderate
 
-####19.1 Write a function to swap a number in place without temporary variables.
+#### 19.1 Write a function to swap a number in place without temporary variables.
 
 ~~~ scala
 def test(){
