@@ -40,9 +40,9 @@ is Any
 - for loop:
 
 ~~~ scala
-for ( i <- 1 to 10) println(i)
-for ( i <- 20 to 10 by -1) println(i)
-for ( i <- 1 to 3; j <- 1 to 3 if i != j ) print ( (10*i + j) + " " )
+for (i <- 1 to 10) println(i)
+for (i <- 20 to 10 by -1) println(i)
+for (i <- 1 to 3; j <- 1 to 3 if i != j ) print ( (10*i + j) + " " )
 ~~~
 - function 
 
