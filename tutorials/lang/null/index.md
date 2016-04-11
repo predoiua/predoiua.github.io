@@ -41,4 +41,8 @@ end;
 
 ### Python
 
-## Bash
+### Bash
+
+### Clojure
+
+- nil. It represents the absence of a value.
