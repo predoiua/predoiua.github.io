@@ -41,6 +41,8 @@ end;
 
 ### Python
 
+- None. A singleton object of type None
+
 ### Bash
 
 ### Clojure
