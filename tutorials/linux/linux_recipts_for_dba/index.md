@@ -542,3 +542,67 @@ ln -s file newLink
 ~~~
 
 # 6 Archiving and Compessing files
+
+## 6-1. Bundling Files Using tar
+
+~~~
+# c = create
+# v = verbose
+# f (file) option directly precedes the name of the tar archive file
+tar -cvf prodrel.tar *.sql
+# on older vesion
+tar -cvf - /oracle/product/10.2 | gzip > orahome.tar.gz
+# move to a diff location without creating archive
+tar -cvf - scripts | (cd /ora01/backup; tar -xvf -)
+~~~
+
+The -f or --file option must come directly before the name of the tar file.
+tar one_mandatory_option [other non-mandatory options] [tar file] [other files]
+
+Mandatory tar Options
+|Option| Description|
+|----------|-----|
+|-c, --create|Create a new archive file.|
+|-d, --diff, --compare| Compare files stored in one tar file with other files.|
+|-r, --append | Append other files to tar file.|
+|-t, --list | Display the names of files in tar file. If other files are not listed,then display all files in tar file.|
+|-u, --update| Add new or updated files to tar file.|
+|-x, --extract, --get| Extract files from the tar file. If other files is not specified,then extract all files from tar file.|
+|-A, --catenate, --concatenate| Append a second tar file to a tar file|
+
+## 6-2. Unbundling Files Using tar
+
+~~~
+tar -xvf mytar.tar
+#you can specify files to extract
+tar -xvf mytar.tar script1.sql script2.sql
+~~~
+
+## 6-3. Finding Differences in Bundled Files Using tar
+
+~~~
+# d = differences
+tar -df backup.tar scripts
+~~~
+
+## 6-4. Bundling Files Using cpio
+
+~~~
+# o (for out or create)
+# v (verbose)
+ls *.sh | cpio -ov > backup.cpio
+#-depth tells the find command to print the directory contents before the directory itself
+find . -depth | cpio -ov | gzip > orahome.cpio.gz
+~~~
+
+[find or ls command] | cpio -o[other options] > filename
+
+## 6-5. Unbundling Files Using cpio
+
+~~~
+# i redirect input from an archive file. 
+# d create directories
+# m  preserve file modification times
+cpio -idvm < linux10g_disk1.cpio
+cat linux10g_disk1.cpio | cpio -idvm
+~~
