@@ -132,10 +132,26 @@ othes collection can be transformed into sets:
 usage
 
 ~~~
-(get	#{:rabbit	:door	:watch}	:rabbit)
-(get	#{:rabbit	:door	:watch}	:jar)
+(get #{:rabbit :door :watch} :rabbit)
+(get #{:rabbit :door :watch} :jar)
 ; same as
-(:rabbit	#{:rabbit	:door	:watch})
+(:rabbit #{:rabbit :door :watch})
 ; same as
-(#{	:rabbit	:door	:watch}	:rabbit)
+(#{ :rabbit :door :watch} :rabbit)
+(contains? #{:rabbit :door :watch} :rabbit)
+; add elem to set
+(conj #{:rabbit :door} :jam)
+; remove element from set
+(disj #{:rabbit :door} :door)
+~~~
+
+## Symbols and the Art of Binding
+
+- When a symbol is evaluated, it returns the thing it refers to.
+
+~~~
+(def developer "Alice")
+developer
+;same as
+user/developer
 ~~~
