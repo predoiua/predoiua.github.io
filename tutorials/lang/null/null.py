@@ -1,3 +1,9 @@
 __author__ = 'predoiua'
 
-print "Hello world!"
+var = None
+if var == None:
+    print "It is"
+if var is None:
+    print "It is"
+
+print "done"
