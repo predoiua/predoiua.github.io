@@ -145,13 +145,63 @@ usage
 (disj #{:rabbit :door} :door)
 ~~~
 
+## List are the Heart of Clojure
+
+- Code is data !
+- All Clojure code is made of lists of data     
+
 ## Symbols and the Art of Binding
 
+
+- symbols represent data
 - When a symbol is evaluated, it returns the thing it refers to.
+- def = used to give something a name
+- let = binding to symbols only in context of let
+- what happens in let, stays in let
 
 ~~~
 (def developer "Alice")
 developer
 ;same as
 user/developer
+(let [developer "Alice in wonderland"] developer)
+developer
 ~~~
+
+
+## Creating our own function
+
+- defn ~ def but for function
+
+~~~ lein
+(defn follow-the-rabbit [] "Off we go!")
+(follow-the-rabbit)
+~~~
+
+- fn for anonymous functions
+
+~~~
+; return a function
+(fn [] ( str "Off we go " "!"))
+; call it
+((fn [] ( str "Off we go " "!")))
+; same as
+(#( str "Off we go " "!"))
+
+(def follow-again (fn [] ( str "Off we go " "!")))
+
+## Keep your symbols in namespace
+
+- namespaces are organized and controlled access to variables
+
+~~~ lein
+(ns alice.favfood)
+; check namespace
+*ns*
+; require a namespace
+(require 'clojure.set)
+; require wit alias
+(ns wonderland (:require [alice.favfood :as af]))
+~~~
+
+# Chapter 2. Flow and Functional transformation
