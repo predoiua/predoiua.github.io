@@ -31,9 +31,17 @@ end;
 
 ### Java
 
-- un-initialized variable
+- un-initialized variable of type Object
+
+~~~java
+Object val;
+if (null == val) {
+   System.out.println("it is")
+}
+~~~~
 
 ### Scala
+
 
 ### JS
 
@@ -41,6 +49,7 @@ end;
 
 ### Python
 
+<<<<<<< Updated upstream
 - None. A singleton object of type None
 
 ### Bash
@@ -48,3 +57,9 @@ end;
 ### Clojure
 
 - nil. It represents the absence of a value.
+=======
+- None
+- "is" operator for object comparison
+ 
+## Bash
+>>>>>>> Stashed changes
