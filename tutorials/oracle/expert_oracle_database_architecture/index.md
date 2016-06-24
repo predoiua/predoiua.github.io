@@ -14,8 +14,7 @@ The files associated with an instance are:
 
 - Parameter files: These files tell the Oracle instance where to find the control files, and they also specify certain initialization parameters that define how big certain memory structures are, and so on. 
 - Trace files: These are diagnostic files created by a server process, generally in response to some exceptional error condition.
-- Alert files: These are similar to trace files, but they contain information about
-“expected” events.
+- Alert files: These are similar to trace files, but they contain information about “expected” events.
 
 The files that make up the database are:
 
