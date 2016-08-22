@@ -6,6 +6,7 @@
 ## Python build in types
 
 ### None
+
     There is a single object with this value
     The object is accessed through None name
     
@@ -16,6 +17,7 @@
 ### numbers.Number
 
 ### Sequences
+
     These represent finite ordered sets indexed by non-negative numbers
 
 #### Immutable Sequences

@@ -205,3 +205,16 @@ developer
 ~~~
 
 # Chapter 2. Flow and Functional transformation
+
+## Controlling the flow with logic
+
+~~~
+(class true)
+(true? true)
+(false? true)
+(not true)
+(not nil)
+(not "hi")
+(= :drinkme :drinkme)
+~~~
+
