@@ -606,3 +606,21 @@ find . -depth | cpio -ov | gzip > orahome.cpio.gz
 cpio -idvm < linux10g_disk1.cpio
 cat linux10g_disk1.cpio | cpio -idvm
 ~~
+
+
+# 10 Managing Server Software
+
+## 10-1. Installing Packages
+
+* local RPM database is stored in the /var/lib/rpm directory, and it houses metadata information about installed packages including package prerequisites and file attributes
+* RPM package file is composed of compressed archive files and dependency information. The package name or label contains the following attributes:
+<name>-<version>-<release>.<architecture>.rpm
+
+~~~
+# -i (or --install) = install
+# -h  displays hash marks during the installation
+# -v provides verbose output that reports the progress of the installation
+rpm -ihv screen-4.0.3-1.el5.i386.rpm
+~~~
+
+# 10-2. Switching to Oracle’s Unbreakable Linux Network
