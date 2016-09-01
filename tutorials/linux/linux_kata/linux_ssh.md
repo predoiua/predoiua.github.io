@@ -51,7 +51,8 @@ docker inspect $(docker ps -qa) | grep IPAddress
 ssh-keygen -t rsa
 
 #copy pub key on remote machine
-#ssh-copy-id -i ~/.ssh/id_rsa.pub bi@172.17.0.1
+ssh-copy-id -i ~/.ssh/id_rsa.pub bi@172.17.0.1
+# or
 cat ~/.ssh/id_rsa.pub | ssh bi@172.17.0.1 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
 #ssh without passwd
