@@ -6,20 +6,21 @@ categories: security
 * will be replace by toc
 {:toc}
 
-#Security
+# Security
 
-##Access Control
+## Access Control
 
-###Authentication(Identity)
+### Authentication(Identity)
 
-###Authorization(Access Management)
+### Authorization(Access Management)
+
 AKA
 - Permission
 
 
-##SSO: Single Sign On
+## SSO: Single Sign On
 
-##HMAC: Keyed-Hashing for Message Authentication
+## HMAC: Keyed-Hashing for Message Authentication
 
 https://tools.ietf.org/html/rfc2104.html
 
@@ -28,17 +29,17 @@ https://tools.ietf.org/html/rfc2104.html
 
 - Function
        ipad = the byte 0x36 repeated B times
-      opad = the byte 0x5C repeated B times.
+       opad = the byte 0x5C repeated B times.
 
 To compute HMAC over the data `text' we perform
 
     H(K XOR opad, H(K XOR ipad, text))
 
 
-##Logout 
+## Logout 
  - Revocation
 
-##Share key
+## Share key
  - 
 
 Token
