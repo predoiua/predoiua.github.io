@@ -26,3 +26,23 @@ select tablespace_name from dba_tablespaces
 alter tablespace REPORTING_DATA offline;
 drop tablespace REPORTING_DATA including contents;
 ~~~
+
+
+# sqlplus
+
+~~~ sqlplus
+host
+host clear
+select username from all_users;
+l
+define
+define _editor = "vi"
+column username format a25
+set pagesize 0
+clear columns
+
+SET MARKUP HTML ON SPOOL ON
+spool a.html
+/
+SET MARKUP HTML OFF SPOOL OFF
+~~~
