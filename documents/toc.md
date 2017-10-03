@@ -3,12 +3,12 @@ layout: none
 ---
 
 ### Technology
-- [not yet-Relational](../docs/relational/)
-- [not yet-Star Schema](../docs/star_schema/)
-- [not yet-Multi-dimensional](../docs/multi_dimensional/)
+- [not yet-Relational](../documents/relational/)
+- [not yet-Star Schema](../documents/star_schema/)
+- [not yet-Multi-dimensional](../documents/multi_dimensional/)
 
 ### Accounting
-* [General](../docs/accounting/)
-* [not yet-Balance Sheet](../docs/accounting/balance_sheet/)
-* [not yet-P&L](../docs/accounting/pnl/)
-* [not yet-Cash Flow](../docs/accounting/cash_flow/)
+* [General](../documents/accounting/)
+* [not yet-Balance Sheet](../documents/accounting/balance_sheet/)
+* [not yet-P&L](../documents/accounting/pnl/)
+* [not yet-Cash Flow](../documents/accounting/cash_flow/)
