@@ -5,9 +5,6 @@ permalink: /docs/
 menu: main
 ---
 
-* Will be replace by toc
-{:toc}
-
 # Who
 - Beneficiary = enterprise, medium-large companies
 - Process owner = finance department
