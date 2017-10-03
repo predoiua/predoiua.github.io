@@ -3,6 +3,7 @@ layout: post
 date:   2015-08-20 22:00:00
 categories: scala
 ---
+
 * will be replace by toc
 {:toc}
 

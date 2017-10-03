@@ -55,7 +55,7 @@ OAuth Actors
 - client
 - Authorization Server
 - Resource Server API
-- Resurce Ower
+- Resurce Owner
 
 
 

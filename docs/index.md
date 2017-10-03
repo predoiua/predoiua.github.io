@@ -2,7 +2,9 @@
 layout: doc
 title: Documentation
 permalink: /docs/
+menu: main
 ---
+
 * Will be replace by toc
 {:toc}
 
