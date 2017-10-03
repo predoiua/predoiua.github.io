@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: Documentation
-permalink: /docs/
+permalink: /documents/
 menu: main
 ---
 
