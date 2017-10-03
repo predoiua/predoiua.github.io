@@ -1,3 +1,11 @@
+---
+layout: post
+date:   2017-10-02 13:00:00
+categories: language training null
+---
+* toc
+{:toc}
+
 ## General about Python
 
 - Objects are Python’s abstraction for data.

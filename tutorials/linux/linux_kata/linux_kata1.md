@@ -29,13 +29,16 @@ vi typescript
 
 ## Manage users and group
 
+Obs: useradd obsolate
+Use ADDUSER/DELUSER instead
+
 ~~~ bash
 tail /etc/passwd
 useradd -D #lowlevel
 useradd bi
 #adduser bi
-mkdir -p /home/bi
-chown bi:bi /home/bi
+mkdir -p /home/sylvain
+chown sylvain:sylvain /home/sylvain
 passwd bi
 groupadd big1
 groupadd big2
