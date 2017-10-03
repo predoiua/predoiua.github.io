@@ -6,6 +6,7 @@ menu: main
 ---
 
 # Who
+
 - Beneficiary = enterprise, medium-large companies
 - Process owner = finance department
 
