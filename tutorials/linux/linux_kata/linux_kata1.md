@@ -113,7 +113,7 @@ test "just a param"
 fct1(){
     echo "return1 $1"
 }
-val1 = `fct1 param`
+val1=$( fct1 param )
 err ${val1} $?
 ~~~
 

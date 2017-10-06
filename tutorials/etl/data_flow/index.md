@@ -34,10 +34,10 @@ Data Flow Model
 - Lambda Architecture [25] systems can achieve many of the desired requirements
 
 Dataflow Model:
-	- What results are being computed.
-	- Where in event time they are being computed.
-	- When in processing time they are materialized.
-	- How earlier results relate to later refinements.
+- What results are being computed.
+- Where in event time they are being computed.
+- When in processing time they are materialized.
+- How earlier results relate to later refinements.
 
 Defines:
 - windowing model which supports unaligned event time windows, and a simple API for their creation and use
