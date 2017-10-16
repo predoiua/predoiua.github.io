@@ -1,0 +1,42 @@
+---
+layout: post
+date:   2017-10-14 13:00:00
+categories: linux
+---
+* will be replace by toc
+{:toc}
+
+# LFCS - Linux Foundation Certified System Administrator
+
+# 1. Linux essentials
+
+~~~
+cat /etc/system-release   # Centos 7.2
+wc -l !$                  # -l = long !$ = last argument
+date --date "40 days"     # date after 40 days
+date --date "40 days ago" # date 40 days ago
+cal -3                    # show previous, current and next month
+cal 7 1971                # cal for 1971.07 month
+tty                       # filename of terminal
+ls -l $(tty)              # $() = execute cmd and put output in it's place
+mesg n                    # don't allow others to write at my terminal. We can notice it in w permition of tty
+~~~
+
+1.1 Install
+
+~~~
+ip a s                    # ip address show
+nmcli conn show           # Network Manager command line tool
+sed -i s/ONBOOT=no/ONBOOT=yes/ /etc/sysconfig/network/network-scripts/ifcfg-... # !!! is ONBOOT="yes" check that a network card start at boot
+yum update                # check for latest package 
+...                       # Install MATE
+systemct set-default graphical.target # set "run level" to graphical
+~~~
+
+1.2 Command line
+
+Physical tty, Local Pseudo tty, Remote Pseudo tty
+
+~~~
+
+~~~
