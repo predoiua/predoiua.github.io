@@ -37,6 +37,44 @@ systemct set-default graphical.target # set "run level" to graphical
 
 Physical tty, Local Pseudo tty, Remote Pseudo tty
 
+# 2. Install CentOS 7
+
+~~~
+yum grouplist                     # list available groups
+yum groupinfo "Development Tools" # list packages available in these groups
+~~~
+
+## Installing Extra Software for VBoxAdditions
+
+~~~
+yum install redhat-lsb-core net-tools epel-release kernel-headers kernel-devel
+yum groupinstall "Development Tools"
+yum update
+reboot
+~~~
+
+## Install GUI
+
+
+~~~
+find / -name "*.target"                   # target = systemd replacement for runlevel
+ls -l /etc/systemd/system/default.target
 ~~~
 
 ~~~
+yum groupinstall "X Window System" "MATE Desktop"
+systemctl set-default graphical.target              # set default target to graphical
+systemctl isolate graphical.target                  # start default target
+~~~
+
+# 3. Command line
+
+ls -l   # long
+ls -i   # show i-node
+ls -a   # all
+ls -lrt # long, reverse order by time
+ls -F   # show file type ( folders end in / )
+cp -R   # recursive
+mkdir -pm # full path, m = with maskr
+
+# 4. Reading files
