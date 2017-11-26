@@ -6,9 +6,9 @@ categories: linux
 * will be replace by toc
 {:toc}
 
-# LFCS - Linux Foundation Certified System Administrator
+# LFCS (Linux Foundation Certified System Administrator) Linux essentials
 
-# 1. Linux essentials
+# 1. Overview
 
 ~~~
 cat /etc/system-release   # Centos 7.2
@@ -27,6 +27,7 @@ mesg n                    # don't allow others to write at my terminal. We can n
 ~~~
 ip a s                    # ip address show
 nmcli conn show           # Network Manager command line tool
+nmcli conn up xxx         # start connection 
 sed -i s/ONBOOT=no/ONBOOT=yes/ /etc/sysconfig/network/network-scripts/ifcfg-... # !!! is ONBOOT="yes" check that a network card start at boot
 yum update                # check for latest package 
 ...                       # Install MATE
@@ -62,7 +63,7 @@ ls -l /etc/systemd/system/default.target
 ~~~
 
 ~~~
-yum groupinstall "X Window System" "MATE Desktop"
+yum groupinstall "X Window system" "MATE Desktop"
 systemctl set-default graphical.target              # set default target to graphical
 systemctl isolate graphical.target                  # start default target
 ~~~
@@ -75,6 +76,6 @@ ls -a   # all
 ls -lrt # long, reverse order by time
 ls -F   # show file type ( folders end in / )
 cp -R   # recursive
-mkdir -pm # full path, m = with maskr
+mkdir -pm # full path, m = with mask ( not using umask )
 
 # 4. Reading files
