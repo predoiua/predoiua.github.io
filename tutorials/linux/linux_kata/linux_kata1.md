@@ -34,9 +34,9 @@ Use ADDUSER/DELUSER instead
 
 ~~~ bash
 tail /etc/passwd
-useradd -D #lowlevel
-useradd bi
-#adduser bi
+# useradd -D #lowlevel
+# useradd bi
+adduser bi
 mkdir -p /home/sylvain
 chown sylvain:sylvain /home/sylvain
 passwd bi
