@@ -117,3 +117,38 @@ pstree
 ps -F     # extra full
 
 
+# 6. Process priority
+
+~~~
+~~~
+
+# 7. Monitor Linux performance
+
+## 7.1 intro
+
+package : procps-ng
+
+~~~
+rpm -ql procps-ng          # -ql = list file in procps-ng
+						   # -qc = list configuration form package
+						   # -qd = list documentation form package
+rpm -qf /usr/bin/top       # from which package is /usr/bin/top
+                           
+~~~
+
+## 7.1 pwdx and pmap
+
+~~~
+~~~
+
+## 7.3 uptime and tload
+
+~~~
+who 
+w
+uptime                 # based on ->
+cat /proc/uptime       # sec system is up, idle time
+cat /proc/loadavg      # load avg last 1 min, 5 min, 15 min, nr active proc, last proc id
+watch -n 4 uptime      # run uptime every 4 sec ( default 2 )
+tload                  # same as previous ( but just load avg )
+~~~
