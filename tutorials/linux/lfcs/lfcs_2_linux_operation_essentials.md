@@ -132,13 +132,16 @@ package : procps-ng
 rpm -ql procps-ng          # -ql = list file in procps-ng
 						   # -qc = list configuration form package
 						   # -qd = list documentation form package
-rpm -qf /usr/bin/top       # from which package is /usr/bin/top
-                           
+rpm -qf /usr/bin/top       # from which package is /usr/bin/top                        
 ~~~
 
 ## 7.1 pwdx and pmap
 
 ~~~
+free -m                    # show free memory in Mega
+pgrep sshd                 # proc id for ssh deamon
+pmap $$                    # memory map for current proc
+pwdx $$                    # pwd for process
 ~~~
 
 ## 7.3 uptime and tload
