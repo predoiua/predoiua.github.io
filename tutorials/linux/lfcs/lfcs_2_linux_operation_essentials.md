@@ -209,5 +209,5 @@ systemctl start/enable sysstat # start it/autostart
 ~~~
 iostat -m     # disk io infor
 pidstat -p $$ # stat of current proc
-mpstat -p ALL # procesor
+mpstat -I ALL # procesor
 ~~~
