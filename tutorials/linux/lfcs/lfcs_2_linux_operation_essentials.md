@@ -56,6 +56,7 @@ systemctl isolate multi-user.target
 systemctl isolate rescue-mode.target   # single user mode ( no network)
 ~~~
 
+during boot:
 grub-> edit -> linux16 line add:
 systemd.unit=rescue.target
 
@@ -119,8 +120,34 @@ ps -F     # extra full
 
 # 6. Process priority
 
+## 6.1 Background task
+
 ~~~
+sleep 1000 &          # start a task in bg
+jobs
+sleep 1000            # start normal (Ctrl-Z) -> Suspend -> (bg) -> run it in bg
+stty -a               # print contol terminal. Check that Ctrl-Z=suspend
+# new terminal
+sleep 1000 &
+exit
+# initial terminal
+jobs                     # see only 2
+ps -F -p $(pgrep sleep)  # see all 3, -F = full -p = for proc id. the one from closed terminal has  
 ~~~
+
+## 6.2
+
+~~~
+ps -l           # PRI, NI = priority and nice of process. Nice in (-20, 19) Pri in (60, 99). 99 = lowest prority
+nice -n 19 sleep 1000 & # -> pri = 99 , nice = 19 = the nicest process
+nice -n 1 sleep 1000 &  # -> pri = 81 , nice = 1 = highest priority for regular user
+renice -n 10 <pid>      # can't decrease nice ( only root can do it )
+~~~
+
+- set nice for users/group
+vi /etc/security/limits.conf
+bi - prority 10 # set 10 priority for user bi
+
 
 # 7. Monitor Linux performance
 
@@ -154,4 +181,33 @@ cat /proc/uptime       # sec system is up, idle time
 cat /proc/loadavg      # load avg last 1 min, 5 min, 15 min, nr active proc, last proc id
 watch -n 4 uptime      # run uptime every 4 sec ( default 2 )
 tload                  # same as previous ( but just load avg )
+~~~
+
+## 7.4 top and vmstat
+
+~~~
+top -b -n1             # -b batch -n1 = 1 run
+vmstat                 # system perf, def in K
+vmstat -S m            # display in M
+vmstat 5 3             # run 3 iterations at 5 sec
+~~~
+
+
+# 8. sysstat
+
+## 8.1 General
+
+~~~
+yum list sysstat               # check if install
+cat /etc/cron.d/sysstat        # it create a cron -> report on system perf
+cat /etc/sysconfig/sysstat     #  config file
+systemctl start/enable sysstat # start it/autostart
+~~~
+
+## 8.2 additional tool
+
+~~~
+iostat -m     # disk io infor
+pidstat -p $$ # stat of current proc
+mpstat -p ALL # procesor
 ~~~
