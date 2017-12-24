@@ -211,3 +211,39 @@ iostat -m     # disk io infor
 pidstat -p $$ # stat of current proc
 mpstat -I ALL # procesor
 ~~~
+
+## 8.3 sar reporting
+
+~~~
+sar           # by default cpu utilization
+sar -u        # cpu info
+sar -r        # memory info
+sar -b        # disk
+sar -n DEV    # network
+sar -q        # load average
+sar -s 14:80:00 -e 15:10:00 -f /var/log/sa/sa15  # -s start date -e end date -f sar file
+~~~
+
+# 9. Managing shared library
+
+## 9.1 add location for library modules
+
+~~~
+ldd /usr/bin/ls                 # list shared library for a program
+cd /etc/ld.so.conf.d            # conf folder
+mkdir /usr/local/lib/vv10  
+cp /root/libsisplayuid.so !$
+chmod +x !$/libdisplayuid.so
+vi /etc/ld.so.conf.d/vv10.conf   # add folder name ( /usr/local/lib/vv10) to this file
+echo $LD_LIBRARY_PATH
+~~~
+
+## 9.2 lib cache
+
+~~~
+ldconfig -p                      # prin lib cache
+ls -l /etc/ld.so.cache           # see when lib cache was updated
+ldconfig                         # update cache
+~~~
+
+# 10. Scheduling tasks
