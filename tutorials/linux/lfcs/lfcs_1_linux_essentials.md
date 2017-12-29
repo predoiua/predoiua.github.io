@@ -41,7 +41,7 @@ Physical tty, Local Pseudo tty, Remote Pseudo tty
 # 2. Install CentOS 7
 
 ~~~
-yum grouplist                     # list available groups
+yum grouplist hidden              # list available groups
 yum groupinfo "Development Tools" # list packages available in these groups
 ~~~
 
@@ -63,6 +63,7 @@ ls -l /etc/systemd/system/default.target
 ~~~
 
 ~~~
+yum install epel-release                            # contains MATE and Cynamon Desktop
 yum groupinstall "X Window system" "MATE Desktop"
 systemctl set-default graphical.target              # set default target to graphical
 systemctl isolate graphical.target                  # start default target

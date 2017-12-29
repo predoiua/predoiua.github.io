@@ -110,13 +110,13 @@ grub2-mkpasswd-pbkdf2
 
 # 5. Managing Linux Processes
 
-
+~~~
 ps -ef    # unix style -f = full
 ps aux    # BSD style
 ps -e --forest
 pstree
 ps -F     # extra full
-
+~~~
 
 # 6. Process priority
 
@@ -241,7 +241,7 @@ echo $LD_LIBRARY_PATH
 ## 9.2 lib cache
 
 ~~~
-ldconfig -p                      # prin lib cache
+ldconfig -p                      # print lib cache
 ls -l /etc/ld.so.cache           # see when lib cache was updated
 ldconfig                         # update cache
 ~~~
