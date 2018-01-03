@@ -216,3 +216,8 @@ ethtool enp0s3             # physical info aboutinterface
 firewall-cmd --list-all
 firewall-cmd --permanet --zone=public --add-service=ssh
 ~~~
+
+## Physical layer
+
+https://linuxconfig.org/how-to-detect-whether-a-physical-cable-is-connected-to-network-card-slot-on-linux
+
