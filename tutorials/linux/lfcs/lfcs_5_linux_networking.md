@@ -46,5 +46,5 @@ yum info avahi   # multi cast DNS (MDNS)
 getent hosts     
 grep host /etc/nsswitch.conf # resolution order
 cat /etc/resolv.conf         # DNS config
-dig www.hotnres.ro @8.8.8.8  # resolve ip using specified DNS
+dig www.hotnews.ro @8.8.8.8  # resolve ip using specified DNS
 ~~~
