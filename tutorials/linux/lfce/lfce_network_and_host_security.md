@@ -95,3 +95,41 @@ systemctl restart rsyslog
 logger "test msg"                   # generate log message
 ~~~
 
+
+## Securing Hosts and services - iptables and TCP Wrappers
+
+### iptables
+
+firewalld (service) -> iptables (command) -> netfiters (kernel)
+
+netfiler concepts
+tables (collection of chains) -> chain(points in time) ->rules(matching rules, target)
+
+chain - PREROUTING, INPUT, FORWARD, OUTPUT, POSTROUTING
+target- ACCEPT, REJECT, DROP, LOG
+states - NEW, ESTABLISHED, RELATED
+
+Default 
+table : FILTER -> Chains: INPUT, FORWARD, OUTPUT
+table : NAT -> Chains: PREROUTING, OUTPUT, POSTROUTING
+table : MANGLE -> Chains: all of them
+
+iptables
+Table = -t = default FILTER
+Command = insert -I/appenf -A/delete -D
+Chain = INPUT, FORWARD, OUTPUT
+Match = -m  = IP, protocol, port
+Target =-j = ACCEPT/REJECT/DROP/LOG
+
+~~~
+iptables -t filter -I INPUT -m tcp -p txp --dport 80 -j ACCEPT
+~~~
+
+configuration files /etc/sysconfig/iptables
+
+~~~
+# remove firewalld, replace it with iptables
+systemctl stop firewalld
+systemctl disable firewalld
+
+~~~
