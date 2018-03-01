@@ -207,7 +207,7 @@ systemctl start/enable sysstat # start it/autostart
 ## 8.2 additional tool
 
 ~~~
-iostat -m     # disk io infor
+iostat -m     # disk io info
 pidstat -p $$ # stat of current proc
 mpstat -I ALL # procesor
 ~~~

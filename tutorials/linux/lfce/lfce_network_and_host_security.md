@@ -122,7 +122,7 @@ Match = -m  = IP, protocol, port
 Target =-j = ACCEPT/REJECT/DROP/LOG
 
 ~~~
-iptables -t filter -I INPUT -m tcp -p txp --dport 80 -j ACCEPT
+iptables -t filter -I INPUT -m tcp -p tcp --dport 80 -j ACCEPT
 ~~~
 
 configuration files /etc/sysconfig/iptables
@@ -131,5 +131,25 @@ configuration files /etc/sysconfig/iptables
 # remove firewalld, replace it with iptables
 systemctl stop firewalld
 systemctl disable firewalld
-
+yum install iptables-services -y
+systemctl enable iptables
+systemctl start iptables
+iptables -L                             # list rules
+iptables -L -v                          # list rules verbose
+vi /etc/sysconfig/iptables              # initial rules
+iptables -I INPUT -s 192.168.2.0/24 -j REJECT # reject everything from that network
+intables -I INPUT -s 192.168.2.100 -p tcp -m tcp --dport 22 -j ACCEPT # allow ssh form that host
+iptables -L --line-numbers             # get ids of rules
+iptables -D INPUT 1                    # delete rules with id 1
+iptables -F                            # Flush - delete all rules
+systemctl reload iptables.service      # reload default rules
+service iptables save                  # save current rules in /etc/sysconfig/iptables
 ~~~
+
+
+## TCP Wrappers
+
+- secure at service level
+
+hosts.allow
+hosts.deny
