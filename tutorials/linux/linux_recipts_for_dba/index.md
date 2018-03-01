@@ -130,8 +130,7 @@ cat ~/.bashrc 1>out.txt 2>&1
 ~~~ bash
 time dd if=/u01/app/oracle/oradata/XE/system.dbf of=/dev/null
 find . -name "alert*.log" 2>/dev/null
-#Chek data corruption
-exp user/pass full=y file=/dev/null
+exp user/pass full=y file=/dev/null                             # Check data corruption
 ~~~
 
 ## 2.11 Display and capture command output

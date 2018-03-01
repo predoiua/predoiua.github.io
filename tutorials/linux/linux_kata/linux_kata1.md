@@ -11,7 +11,7 @@ categories: linux training
 ## Launch Docker VM
 
 ~~~ bash
-docker run -it --rm ubuntu:latest /bin/bash
+docker run -it --rm ubuntu:latest /bin/bash        # or phusion/baseimage
 ~~~
 
 ## Record commands and check term capabilities
@@ -34,16 +34,11 @@ Use ADDUSER/DELUSER instead
 
 ~~~ bash
 tail /etc/passwd
-# useradd -D #lowlevel
-# useradd bi
 adduser bi
-mkdir -p /home/sylvain
-chown sylvain:sylvain /home/sylvain
 passwd bi
 groupadd big1
 groupadd big2
-#add user bi in 2 groupus
-usermod -a -G big1,big2 bi
+usermod -a -G big1,big2 bi              #add user bi in 2 groupus
 #set default group. in our case no changes
 usermod -g bi bi
 id bi
