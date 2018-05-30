@@ -203,4 +203,28 @@ find /boot -size +10000k -type f -exec du -h {} \;   # see details about these f
 
 # 6 vim
 
-	
+~~~
+touch newfile
+> newfile1       # same as previous
+touch newfile    # change modificatino time
+stat newfile     # many details about this file
+~~~
+
+.vimrc
+set showmode nonumber nohlsearch
+set ai ts=4 expandtab                         # auto indent, tab spaces = 4
+abbr _sh #!/bin/bash
+nmap <C-N>: set invnumber <CR>
+
+:e! = revert to last save version
+g~~ = change line case
+gUU = put line un upper case
+d$ = delete to eol
+dG = delete to eof
+:r file = insert file content
+
+# 7 piping and redirection
+
+
+
+
