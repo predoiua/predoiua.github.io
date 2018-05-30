@@ -8,6 +8,8 @@ categories: linux
 
 # LFCS (Linux Foundation Certified System Administrator) Linux essentials
 
+Learning the Essentials of CentOS Enterprise Linux 7 Administration
+
 # 1. Overview
 
 ~~~
@@ -225,6 +227,114 @@ dG = delete to eof
 
 # 7 piping and redirection
 
+## 7.1 redirect STDOUT
+
+~~~
+> file               # create file
+> newfile            # overwrite file content
+df -h > file1        # write command output to file
+df -h 1> file1       # explicitly specify STDOUT (1>)
+df -h 1>> file1      # append
+~~~
+
+## 7.2 noclobber
+
+~~~
+set -o                # check shell options
+set -o noclobber      # set noclobber on
+set -o | greo noclobber
+date +%F > file1     # failure to overwrite file1
+date +%F >| file1    # force to overwrite
+~~~
+
+## 7.3 redirect STDERR
+
+~~~
+ls /etcw > err               # error is sent to stdout
+ls /etcw 2>| err             # now we have the error in err file
+find /etc -fype l 2> /dev/null
+find /etc -fype l &> /err.txt  # redirect stdout and std err
+~~~
+
+## 7.3 read STDIN
+
+~~~
+mail                     # check mail
+df -hlT > diskfree       # human, show type, long
+mail -s "Desk Free" predoiua < disckfree  # send a mail to predoiua. diskfree file as mail content
+~~~
+
+## 7.4 HERE documents
+
+~~~
+cat > mynewfile <<END
+this is a little file
+created from script
+END
+
+cat mynewfile
+~~~
+
+## 7.5 pipeline
+
+~~~
+ls | wc -l
+head -n1 /etc/passwd
+cut -f7 -d: /etc/passwd | sort | uniq  # all shell used
+~~~
+
+## 7.6 named pipe
+
+~~~
+ls -l $(tty)        # check a char device
+mkfifo mypipe
+ls -l !$            # start with p = type pipe
+ls > mypipe         # in one terminal
+wc -l < mypipe      # in other terminal
+~~~
+
+## 7.7 tee
+
+view on screen and redirect to file
+
+~~~
+ls > f89
+ls | tee f 89    # go both in file and screen
+sudo echo '127.0.0.1 bob'  >> /etc/hosts       # fail, as only command is run as root the redirect as current user
+echo '127.0.0.1 bob'  | sudo tee -a /etc/hosts  # the correct way
+~~~
+
+# 8 Archiving files
+
+
+## 8.1 tar
+
+~~~
+tar -cf doc.tar  /usr/share/doc                      # -c = --create. Archive docs
+tar --list --file=doc.tar
+tar -lf  doc.tar                                     # same as before
+tar -evf doc.tar                                     # extract in current folder
+tar -cvt my0.tar -g my.snar test                     # archive incremental folder test
+tar -cvt my1.tar -g my.snar test                     # will contain only delta
+rm test       # dezaster
+tar -xvf my0.tar -g /dev/null
+tar -xvf my1.tar -g /dev/null
+~~~
+
+## 8.2 archive
+
+~~~
+gzip tux.tar       # file was removod and new file tux.tar.gz
+file tux.tar.gz
+gunzip tux.tar.gz
+
+bzip2 tux.tar     # better compression tux.tar.bz2
+bunzip2 tux.tar.bz2
+
+time tar -cvf tux.tar $HOME
+time tar -cvzf tux.tar.gz $HOME    # include compression. gz
+time tar -cvjf tux.tar.bz2 $HOME    # bz2
+~~~
 
 
 
