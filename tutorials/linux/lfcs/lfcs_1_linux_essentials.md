@@ -66,6 +66,7 @@ ls -l /etc/systemd/system/default.target
 
 ~~~
 yum install epel-release                            # contains MATE and Cynamon Desktop
+yum --enablerepo=epel-testing install atril atril-caja # Only for CenoOS 7.5 - some packages are broken
 yum groupinstall "X Window system" "MATE Desktop"
 systemctl set-default graphical.target              # set default target to graphical
 systemctl isolate graphical.target                  # start default target
@@ -197,7 +198,7 @@ md5sum /usr/bin/passwd   # for binary use md5sum to compare
 find /usr/share/doc -name  '*.pdf'     # -print is default action
 find /usr/share/doc -name  '*.pdf'  -exec cp {} . \; # copy result in current folder
 find -name '*.pdf'  -delete                          # delete them. if no folder -> current folder
-file /etc -type l -maxdepth  1  # search only in /etc for links
+find /etc -type l -maxdepth  1  # search only in /etc for links
 df -h /boot                     # see free space on /boot
 find /boot -size +2000k -type f # fin files > 2m
 find /boot -size +10000k -type f -exec du -h {} \;   # see details about these files
@@ -299,7 +300,7 @@ view on screen and redirect to file
 
 ~~~
 ls > f89
-ls | tee f 89    # go both in file and screen
+ls | tee f89    # go both in file and screen
 sudo echo '127.0.0.1 bob'  >> /etc/hosts       # fail, as only command is run as root the redirect as current user
 echo '127.0.0.1 bob'  | sudo tee -a /etc/hosts  # the correct way
 ~~~
