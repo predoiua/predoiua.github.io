@@ -39,3 +39,24 @@ LVS + Keepalive
 LVS + ldirectord
 HAProxy
 
+## Working with Failover cluster
+
+### Pacemaker
+pcs - command line
+
+## Working with HA Cluster Storage
+
+DRBD = Distributed Replicated Block Device
+
+~~~
+lsblk
+~~~
+
+## Working with Clustered File System
+
+OCFS2
+GFS2
+
+GlusterFS
+AFS( Andrew File System )
+CephFS
