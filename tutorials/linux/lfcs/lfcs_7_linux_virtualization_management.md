@@ -109,7 +109,47 @@ lsmod | grep kvm
 ### virsh remote
 
 ~~~
-virsh -c quemu:///system
-virsh -c quemu+ssh://root@127.0.0.1/system
+virsh -c qemu:///system
+virsh -c qemu+ssh://root@127.0.0.1/system
 ~~~
+
+## Create Virtual Machine
+
+### Virt Manager from ISO
+
+~~~
+ls /var/lib/libvirt/images    # location for vm hdd images. should add iso imgs here
+vrit-manager                  # virtual manager - GUI
+~~~
+
+## PXE
+
+see Linux Service Management course 
+- install sFtp check /var/ftp/pub
+tftp, edit network, set selinux
+
+## CLI
+
+yum install virt-install virt-viewer
+
+## Managing virtual machines
+
+
+## Find IP
+
+~~~
+# vers 1
+virsh net-list
+virsh net-info default
+virsh net-dhcp-leases default
+# vers 2
+virsh list
+virsh domifaddr centos7.5_vm1
+# vers 3
+arp -e
+virsh list
+virsh dumpxml VM_NAME | grep "mac address" | awk -F\' '{ print $2}'
+arp -an | grep 52:54:00:ce:8a:c4
+~~~
+
 
