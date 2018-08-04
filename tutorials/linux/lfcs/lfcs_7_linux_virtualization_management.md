@@ -119,23 +119,31 @@ virsh -c qemu+ssh://root@127.0.0.1/system
 
 ~~~
 ls /var/lib/libvirt/images    # location for vm hdd images. should add iso imgs here
-vrit-manager                  # virtual manager - GUI
+virt-manager                  # virtual manager - GUI
 ~~~
 
-## PXE
+### PXE
 
 see Linux Service Management course 
 - install sFtp check /var/ftp/pub
 tftp, edit network, set selinux
 
-## CLI
+### CLI
 
 yum install virt-install virt-viewer
 
 ## Managing virtual machines
 
+~~~
+virsh net-edit default  # edit network config
+virth net-update default add ip-dhcp-host \
+	"<host mac='52:54:00:00:00:01' name='ipa' ip='192.168.122.11' />" \
+	--live --config
+~~~
 
-## Find IP
+## Nice
+
+### Find IP
 
 ~~~
 # vers 1
@@ -151,5 +159,32 @@ virsh list
 virsh dumpxml VM_NAME | grep "mac address" | awk -F\' '{ print $2}'
 arp -an | grep 52:54:00:ce:8a:c4
 ~~~
+
+### Change mac
+
+~~~
+virsh edit centos7.5_ipa   # edit VM xml config file
+virsh destroy centos7.5_ipa # stop VM
+ start centos7.5_ipa 
+~~~
+
+### Set IP
+
+Edit config of DHCP service to povide static IP
+
+~~~
+virsh  dumpxml  $VM_NAME | grep 'mac address'
+virsh  net-list
+virsh  net-edit  $NETWORK_NAME    # Probably "default"
+~~~
+
+Find the <dhcp> section, restrict the dynamic range and add host entries for your VMs
+
+<dhcp>
+  <range start='192.168.122.100' end='192.168.122.254'/>
+  <host mac='52:54:00:00:00:01' name='ipa' ip='192.168.122.11'/>
+  <host mac='52:54:00:00:00:02' name='vm2' ip='192.168.122.12'/>
+  <host mac='52:54:00:00:00:03' name='vm3' ip='192.168.122.12'/>
+</dhcp>
 
 
