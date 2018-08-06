@@ -8,6 +8,41 @@ categories: linux
 
 # RHCSA
 
+## 6. User and Group Management
+
+### Foundation Topics
+
+#### Users on Linux
+
+- privileged users,. This user account has full access to everything on a Linux server and is allowed to work in system space without restrictions
+- unprivileged users.
+
+~~~
+id linda          # get info about user linda
+~~~
+
+#### Working as Root
+
+- all tasks that involve direct access to devices need root permissions.
+- Methods to Run Tasks with Elevated Permissions
+
+|su  | Opens a subshell as a different user, with the advantage that only in the subshell commands are executed as root|
+|sudo | Allows you to set up an environment where specific tasks are executed with administrative privileges|
+|PolicyKit | Allows you to set up graphical utilities to run with administrative privileges |
+
+sudo
+~~~
+usermod -aG wheel user         # 1. Make the administrative user account member of the group wheel by using
+visudo                         # 2. Type visudo and make sure the line %wheel ALL=(ALL) ALL is included
+~~~
+
+#### Managing User Accounts
+
+- System and Normal Accounts
+
+
+
+
 ## 7. Configurating permissions
 
 ### Foundation
