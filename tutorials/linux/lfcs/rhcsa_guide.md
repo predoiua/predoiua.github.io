@@ -142,7 +142,67 @@ For root set to 027, whereas normal users work with the default umask 022.
 #### Working with User Extended Attributes
 
 
-# RHCSA
+# RHCE
+
+## 22. Configuring a Firewall
+
+###  Foundation Topics
+
+#### Understanding Linux Firewalling
+
+- firewalling is implemented in the Linux kernel by means of the netfilter subsystem.
+- iptables = previous solution to interact with netfilter. it cannot be used on a server where firewalld is used as well.
+
+#### Understanding Firewalld
+
+- Firewalld is a system service that can configure firewall rules by using different interface
+- applications can request ports to be opened using the DBus messaging system
+- It uses the firewalld service to manage the netfilter firewall configuration.
+
+~~~
+firewall-config
+firewall-cmd
+~~~
+
+#### Understanding Firewalld Zones
+
+- used when multiple interfaces
+
+| Zone name | Default Settings |
+| Block | Incoming network connections are rejected with an “icmp-host-prohibited” message. Only network connections that were initiated on this system are allowed. |
+| Dmz | For use on computers in the demilitarized zone. Only selected incoming connections are accepted, and limited access to the internal network is allowed. |
+| Drop | Any incoming packets are dropped and there is no reply. |
+| External | For use on external networks with masquerading (Network Address Translation [NAT]) enabled, used especially on routers. Only selected incoming connections are accepted.|
+| Home | For use with home networks. Most computers on the same network are trusted, and only selected incoming connections are accepted. |
+| Internal | For use in internal networks. Most computers on the same network are trusted, and only selected incoming connections are accepted. |
+| Public | For use in public areas. Other computers in the same network are not trusted, and limited connections are accepted.This is the default zone for all newly created network interfaces|
+| trusted | All network connections are accepted. |
+| work | For use in work areas. Most computers on the same network are trusted, and only selected incoming connections are accepted. |
+
+####  Understanding Firewalld Services
+
+- service in firewalld is not the same as a service in systemd
+- Behind each service is a configuration file that explains which UDP or TCP ports are involved
+- Service files are stored in the directory /usr/lib/firewalld/services or /etc/firewalld/ services
+
+~~~
+firewall-cmd --get-services    # a List of All Available Services
+~~~
+
+### Working with Firewalld
+
+- both tools work with an in-memory state of the configuration in addition to an on-disk state (permanent state) of the configuration.
+
+~~~
+systemctl mask iptables         # make sure iptables can't be started by accident
+firewall-cmd --get-default-zone 
+firewall-cmd --get-zones        # all zones
+frewall-cmd --get-services 
+frewall-cmd --get               # to see what we can get
+firewall-cmd --list-all         # get an overview of firewall
+~~~
+
+
 
 ## 25. Configuring External Authentication and Authorization
 
@@ -254,9 +314,55 @@ systemctl restart sssd
 su - lisa
 ~~~
 
+#### Kerberos Authorization
+
+~~~
+yum install -y pam_krb5 krb5-workstation
+authconfig-tui
+	# under Authentication -> select Use Kerberos
+	# Kerberos Settings screen,
+	# Realm: VV10.COM
+	# KDC: ipa.vv10.com
+	# Admin Server: ipa.vv10.com
+	# Alternatively Use DNS to Resolve Hosts to Realms and Use DNS to Locate KDCs for Realms 
+kinit -k   # to check configuration
+kinit lisa
+~~~
 
 
+## APPENDIX D - Setting Up Identity Management
 
+disable SELinux
+~~~
+getenforce
+setenforce 0  # disable until next reboot
+vi /etc/sysconfig/selinux   # SELINUX=disabled then reboot
+sestatus                    # check status
+~~~
 
+~~~
+yum -y install ipa-server bind-dyndb-ldap
+yum install ipa-server-dns                 # by me .. I think is needed
+ipa-server-install --setup-dns             # start install program
+	# add 8.8.8.8                as external DNS
+	# 122.168.192.in-addr.arpa   as reverse zone name    
 
+for i in http https ldap ldaps kerberos kpasswd dns ntp; do firewall-cmd --permanent --add-service $i; done
+firewall-cmd --reload
+~~~
 
+~~~
+kinit admin     # get ticket for ipa user-add, ..
+klist           # check ticket
+~~~
+
+Preparing Your IPA Server for User Authentication
+
+~~~
+yum install -y vsftpd    
+systemctl enable vsftpd; systemctl start vsftpd
+cp ~/cacert.p12 /var/ftp/pub   # copy the CA certifi- cate of the IPA server to the FTP site
+firewall-cmd --permanent --add-service ftp; firewall-cmd --reload
+ipa user-add lisa
+ipa passwd lisa
+~~~
