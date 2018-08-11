@@ -34,14 +34,62 @@ sudo
 ~~~
 usermod -aG wheel user         # 1. Make the administrative user account member of the group wheel by using
 visudo                         # 2. Type visudo and make sure the line %wheel ALL=(ALL) ALL is included
+man pkexec polkit              # check policy kit
 ~~~
 
 #### Managing User Accounts
 
 - System and Normal Accounts
 
+user accounts: for people who need limited access to server. typically there is a pass for authentication
+system accounts : used by the services
+Both share /etc/passwd and /etc/shadow
 
+- Creating users
 
+~~~
+useradd linda
+userdel -r linda  # including the complete user environment.
+vipw              # to modify passwd file directly. set lock to prevent file corruption
+vipw -s           # edit shadow
+vigr              # edit group
+useradd -m -u 1201 -G sales,ops linda # UID 1201, -m = create home
+	# /etc/skel = skeleton for home directory
+	# user defaults
+	# /etc/login.defs 
+		# MOTD_FILE = "message of the day” file
+		# ENV_PATH = the $PATH variable
+		# PASS_MAX_DAYS, PASS_MIN_DAYS, and PASS_WARN_AGE: Define the default password expiration properties
+		# UID_MIN
+		# CREATE_HOME
+		# USERGROUPS_ENAB
+	# /etc/default/ 
+passwd linda      # set paswd
+passwd -n 30 -w 3 -x 90 linda # -n=minimal usage, -x=expire -w=warning duration
+chage -E 2015-12-31 bob       # -E expire on 
+change -l linda               # see linda passwd settings
+~~~ 
+
+- Creating a User Environment
+
+- /etc/profile: Used for default settings for all users when starting a login shell
+- /etc/bashrc: Used to define defaults for all users when starting a subshell
+- ~/.profile: Specific settings for one user applied when starting a login shell
+- ~/.bashrc: Specific settings for one user applied when starting a subshell
+
+~~~
+vim /etc/login.defs
+cd /etc/skel ;  mkdir Pictures
+useradd linda
+passwd linda
+passwd -n 30 -w 3 -x 90 linda
+for i in lisa lori bob; do useradd $i; done
+grep lori /etc/passwd /etc/shadow /etc/group
+~~~
+
+#### Creating and Managing Group Accounts
+
+- Besides the mandatory primary group, users can be a member of one or more secondary groups as well. Secondary groups are important to get access to files.
 
 ## 7. Configurating permissions
 
