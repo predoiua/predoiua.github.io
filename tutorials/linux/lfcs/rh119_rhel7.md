@@ -56,6 +56,7 @@ Terms:
 /boot = files needed in order to start the boot process
 /dev = special device files used by system to access hardware
 
+~~~
 cp file1 file2 file3 dir  # cp files
 mv file1 file2 file3 dir  # mv files
 rm -f file1 file2 file3   # rm files
@@ -68,3 +69,15 @@ hard link:
 touch file1
 ln file1 file2
 ls -il             # same inode, link count (2)
+
+~~~
+
+## 3. Users and groups
+
+## What is user
+
+Every program runs as a particular user. Every file is owned by a particular user. Access to files a restricted by user.
+
+~~~
+id                  # info 
+~~~
