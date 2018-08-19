@@ -67,7 +67,7 @@ useradd -m -u 1201 -G sales,ops linda # UID 1201, -m = create home
 passwd linda      # set paswd
 passwd -n 30 -w 3 -x 90 linda # -n=minimal usage, -x=expire -w=warning duration
 chage -E 2015-12-31 bob       # -E expire on 
-change -l linda               # see linda passwd settings
+chage -l linda                # see linda passwd settings
 ~~~ 
 
 - Creating a User Environment
@@ -113,7 +113,7 @@ newgrp bi2           # user bi can set new primary group until session ends
 #### Managing basic permissions
 
 - no rights inheritance
-- read on directory = list content of that directory. To read a file you need permission on folder
+- read on directory = list content of that directory. To read a file you need permission on file.
 - write on file, doesn't grant right to delete or modify permissions. Need write on directory to create files or change permissions on files.
 - execute will never be set by default. On folder it allows cd in it.
 
@@ -200,7 +200,7 @@ setfacl -m d:g:sales:rx /data    # group sales to have read and execute on every
 
 
 |Value |Applied to Files| Applied to Directories
-|0| Read and write | Everything
+|0| Read and write | Everything|
 |1| Read and write | Read and write|
 |2| Read| Read and execute |
 |3| Read| Read|
