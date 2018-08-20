@@ -211,13 +211,13 @@ setfacl -m d:g:sales:rx /data    # group sales to have read and execute on every
 
 
 File : start with 666 and substract umask
-Direcotry : start with 777 and substract umask
+Directory : start with 777 and substract umask
 
 To set it for all users:
-Ceate a shell script with the name umask.sh in the /etc/profile.d directory and specify the umask/
+Create a shell script with the name umask.sh in the /etc/profile.d directory and specify the umask/
 
 To set if only for some users:
-Cchange the umask settings in a file with the name .profile, which is created in the home folder
+Change the umask settings in a file with the name .profile, which is created in the home folder
 
 For root set to 027, whereas normal users work with the default umask 022.
 
