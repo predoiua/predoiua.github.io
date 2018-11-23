@@ -12,8 +12,9 @@ categories: linux
 
 lab :
 - server0
-	- Net 1: 192.168.1.1 - intnet1 -> server1 192.168.1.100
-	- Net 2: 192.168.2.1 - intnet1 -> server1 192.168.2.200
+    - NAT
+	- Net 1: 192.168.1.1 - intnet1 -> server1 192.168.1.100  # internal network
+	- Net 2: 192.168.2.1 - intnet2 -> server1 192.168.2.200
 
 - server 0
 ~~~
