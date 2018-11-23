@@ -22,7 +22,7 @@ Glossary : shell, prompt, command, option, argument, physical console, virtual c
 CTRL+ALT+Fx = go to virtual console x
 
 ~~~
-usermod -aG cognos bi     # add seli to cognos group
+usermod -aG cognos bi     # add bi to cognos group
 usermod -L bi               # lock user bi
 ~~~
 
@@ -60,7 +60,7 @@ Terms:
 cp file1 file2 file3 dir  # cp files
 mv file1 file2 file3 dir  # mv files
 rm -f file1 file2 file3   # rm files
-mkfir -p par1/par2/dir    # create dir
+mkdir -p par1/par2/dir    # create dir
 cp -r dir1 dir2 dir3 dir4  # cp direcotry
 mv dir1 dir2 dir3 dir4     # mv dir
 rm -rf dir1 dir2 dir3      # rm recursive, no confirmation

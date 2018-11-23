@@ -221,5 +221,3 @@ firewall-cmd --permanet --zone=public --add-service=ssh
 ## Physical layer
 
 https://linuxconfig.org/how-to-detect-whether-a-physical-cable-is-connected-to-network-card-slot-on-linux
-
-t
