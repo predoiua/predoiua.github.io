@@ -8,17 +8,43 @@ categories: security
 
 # Security
 
-## Access Control
+## Nice audit site
 
-### Authentication(Identity)
+https://www.ssllabs.com/ssltest/analyze.html
+https://securityheaders.io
+https://observatory.mozilla.org
 
-### Authorization(Access Management)
+# Regulation ( include GDPR )
+
+https://ico.org.uk/for-organisations/
+
+# Modern Security paterns
+
+## Load exernal resources
+SRI = SubResurce Integriy = add sha next to resource you load
+->
+CSP = Content Security Policies = Specify the sites you can load resources ( header or metadata )
+
+## Compromise CA
+Pin PKI = list of CA that can sign your certificate. To be removed, it's dangerous as you can kill your site
+->
+CAA = DNS Certification Authority Authorization
+
+## Add security contact info
+
+https://site/.well-known/security.txt
+
+# Access Control
+
+## Authentication(Identity)
+
+## Authorization(Access Management)
 
 AKA
 - Permission
 
 
-## SSO: Single Sign On
+# SSO: Single Sign On
 
 ## HMAC: Keyed-Hashing for Message Authentication
 

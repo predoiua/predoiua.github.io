@@ -35,6 +35,14 @@ nmtui                     # adress: 192.168.2.200/24
 
 ## Net topology and OSI
 
+|7 - Application  | App data  | actual app  | Process   = Web Browser
+|6 - Presentation | App data  | traslation  | Code      = Web Page
+|5 - Session      | App data  | app lvl     | Socket    = HTTP Get
+|4 - Transport    | Segment   | segment,deli| Port      = TCP + 0xab..
+|3 - Network      | Packet    | adrs, route | Router    = IP + TCP + 0xab..
+|2 - Data link    | Frame     | encoding    | Ethernet  = Frame + IP + TCP + 0xab.. + Frame 
+|1 - Physical     | bits      | Actual wire | NIC,modem = 10101..
+
 - server0
 
 ~~~
@@ -62,9 +70,10 @@ change from 192.168.2.1/24 to 192.168.2.1/25
 ~~~
 ip addr                         # show ip of all interfaces
 cd /etc/sysconfig/network-scripts/
-vi ifcfg-Wire..                 # and change prefix
-ifdown enp0s9                   # restart interface
-ifup enp0s9
+vi ifcfg-eth2                # and change prefix. eth2, enp0s9
+#PREFIX=25
+ifdown eth2                   # restart interface eth2, enp0s9
+ifup eth2
 ~~~
 
 - server1
