@@ -35,3 +35,49 @@ systemctl mask network         # mask it to  prevent and admin starting it by mi
 
 Controlling the boot process pg 26
 
+Targets
+- graphical.target - multi users, graph+text login
+- multi-user.target - multi users, text login
+- rescue.target - sulogin prompt, basic system initialization
+- emergency.tartet - sulogin prompt. initramfs pivot complete and system root mounted on / read-only
+
+Add to grub systemd.unit=rescue.target
+
+~~~
+ps -p 1             # check if has systemd
+ps -up 1
+systemctl list-dependencies graphical.target | grep target
+systemctl list-units --type=target --all
+systemctl list-unit-files --type=target
+systemctl isolate multi-target
+systemctl get-default
+systemctl set-default graphical.target
+~~~
+
+recover pass
+- grub linux16 line add "rd.break"
+
+~~~
+mount -oremount,rw /sysroot
+chroot /sysroot
+passwd root
+touch /.autorelabel          # se linux is not started. make sure passwd will have correct context
+~~~
+
+~~~
+systemctl enable debug-shell.service # a root shell will be spawned on tty9
+~~~
+
+## 2. Managing IPv6 networking
+
+Configuration of network interfaces is managed by NetworkManager daemon.
+- device = network interace
+- connection - collection of settings that can be configured for a device
+- only one connection is active for one device at a time.
+- persistent confoguration saved in /etc/sysconfig/network-scripts/ifcfg-name
+
+~~~
+nmcli dev status       # status of all network devices
+nmcli con show         # list all connections
+ip addr show           # display current configuration of net interface
+~~~
