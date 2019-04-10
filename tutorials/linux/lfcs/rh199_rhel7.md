@@ -6,7 +6,7 @@ categories: linux
 * will be replace by toc
 {:toc}
 
-# RH119
+# RH199
 
 ## General
 
@@ -23,7 +23,11 @@ CTRL+ALT+Fx = go to virtual console x
 
 ~~~
 usermod -aG cognos bi     # add bi to cognos group
+<<<<<<< HEAD:tutorials/linux/lfcs/rh119_rhel7.md
 usermod -L bi             # lock user bi
+=======
+usermod -L bi               # lock user bi
+>>>>>>> f3426af05092c4021c6f6859c6d8089dba88c855:tutorials/linux/lfcs/rh199_rhel7.md
 ~~~
 
 ### SSH key-based authentication
@@ -60,7 +64,7 @@ Terms:
 cp file1 file2 file3 dir  # cp files
 mv file1 file2 file3 dir  # mv files
 rm -f file1 file2 file3   # rm files
-mkfir -p par1/par2/dir    # create dir
+mkdir -p par1/par2/dir    # create dir
 cp -r dir1 dir2 dir3 dir4  # cp direcotry
 mv dir1 dir2 dir3 dir4     # mv dir
 rm -rf dir1 dir2 dir3      # rm recursive, no confirmation

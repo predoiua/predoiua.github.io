@@ -12,8 +12,9 @@ categories: linux
 
 lab :
 - server0
-	- Net 1: 192.168.1.1 - intnet1 -> server1 192.168.1.100
-	- Net 2: 192.168.2.1 - intnet1 -> server1 192.168.2.200
+    - NAT
+	- Net 1: 192.168.1.1 - intnet1 -> server1 192.168.1.100  # internal network
+	- Net 2: 192.168.2.1 - intnet2 -> server1 192.168.2.200
 
 - server 0
 ~~~
@@ -33,6 +34,14 @@ nmtui                     # adress: 192.168.2.200/24
 ~~~
 
 ## Net topology and OSI
+
+|7 - Application  | App data  | actual app  | Process   = Web Browser
+|6 - Presentation | App data  | traslation  | Code      = Web Page
+|5 - Session      | App data  | app lvl     | Socket    = HTTP Get
+|4 - Transport    | Segment   | segment,deli| Port      = TCP + 0xab..
+|3 - Network      | Packet    | adrs, route | Router    = IP + TCP + 0xab..
+|2 - Data link    | Frame     | encoding    | Ethernet  = Frame + IP + TCP + 0xab.. + Frame 
+|1 - Physical     | bits      | Actual wire | NIC,modem = 10101..
 
 - server0
 
@@ -61,9 +70,16 @@ change from 192.168.2.1/24 to 192.168.2.1/25
 ~~~
 ip addr                         # show ip of all interfaces
 cd /etc/sysconfig/network-scripts/
+<<<<<<< HEAD
 vi ifcfg-Wire..                 # and change prefix
 ifdown enp0s9                   # restart interface -> nmcli dev disconnect
 ifup enp0s9                     #   -> nmcli con up
+=======
+vi ifcfg-eth2                # and change prefix. eth2, enp0s9
+#PREFIX=25
+ifdown eth2                   # restart interface eth2, enp0s9
+ifup eth2
+>>>>>>> f3426af05092c4021c6f6859c6d8089dba88c855
 ~~~
 
 - server1
@@ -220,5 +236,3 @@ firewall-cmd --permanet --zone=public --add-service=ssh
 ## Physical layer
 
 https://linuxconfig.org/how-to-detect-whether-a-physical-cable-is-connected-to-network-card-slot-on-linux
-
-t
