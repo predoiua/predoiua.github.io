@@ -22,8 +22,8 @@ Glossary : shell, prompt, command, option, argument, physical console, virtual c
 CTRL+ALT+Fx = go to virtual console x
 
 ~~~
-usermod -aG cognos bi     # add seli to cognos group
-usermod -L bi               # lock user bi
+usermod -aG cognos bi     # add bi to cognos group
+usermod -L bi             # lock user bi
 ~~~
 
 ### SSH key-based authentication

@@ -12,7 +12,7 @@ categories: linux
 
 ~~~
 ifconfig enp0s3       # interface details. replace by ip addr and ip link
-ip addr               #
+ip l                  # link
 ip a                  # address
 ip r                  # route
 ip n                  # neighbour. arp cache
@@ -35,7 +35,7 @@ hostname -f       # see full hostname
 uname -n          # node name
 hostnamectl       # with systemd
 hostname cent7    # set transient hostname
-cat /etc/machine-info # see pretty name
+cat /etc/machine-info # see pretty name. not in contos 7
 ~~~
 
 - name resolution

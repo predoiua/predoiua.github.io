@@ -62,8 +62,8 @@ change from 192.168.2.1/24 to 192.168.2.1/25
 ip addr                         # show ip of all interfaces
 cd /etc/sysconfig/network-scripts/
 vi ifcfg-Wire..                 # and change prefix
-ifdown enp0s9                   # restart interface
-ifup enp0s9
+ifdown enp0s9                   # restart interface -> nmcli dev disconnect
+ifup enp0s9                     #   -> nmcli con up
 ~~~
 
 - server1
