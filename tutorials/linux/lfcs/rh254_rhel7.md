@@ -78,6 +78,16 @@ Configuration of network interfaces is managed by NetworkManager daemon.
 
 ~~~
 nmcli dev status       # status of all network devices
+ip link                # show dev
 nmcli con show         # list all connections
 ip addr show           # display current configuration of net interface
+~~~
+
+~~~
+nmcli dev dis device   # deactivate net interface
+nmcli dev down name    # usually don't work as NetworkManager will restart it
+
+nmcli con show static-eth0    # show connection details
+nmcli con mod  static-eth0 ipv4.addresses "192.0.2.2/24 192.0.2.254"  # set ip + gw
+nmcli con mod  static-eth0 +ipv4.dns 192.0.2.1                        # add dns server addr
 ~~~
