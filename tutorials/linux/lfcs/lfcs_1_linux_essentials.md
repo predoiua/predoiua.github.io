@@ -179,7 +179,7 @@ grep -E '[aeiou]{5}' !$         # words with 5 vowel in row
 
 ~~~
 sed '/^#/d ; /^$/d'  ntp.conf    # delete empty lines and comments
-~~~o
+~~~
 
 
 ## 5.4 comparing files
@@ -243,7 +243,7 @@ df -h 1>> file1      # append
 ~~~
 set -o                # check shell options
 set -o noclobber      # set noclobber on
-set -o | greo noclobber
+set -o | grep noclobber
 date +%F > file1     # failure to overwrite file1
 date +%F >| file1    # force to overwrite
 ~~~

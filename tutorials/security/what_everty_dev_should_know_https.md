@@ -10,7 +10,7 @@ categories: security
 
 ## The HTTPS value proposition
 
-- confidentiality - can't read comuniation
+- confidentiality - can't read comunication
 - integrity - isp can't add keylogger to 3rh party site
 - authenticity - prevent DNS poison. airport or hotel
 
