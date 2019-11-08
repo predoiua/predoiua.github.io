@@ -34,7 +34,7 @@ drop tablespace REPORTING_DATA including contents;
 host
 host clear
 select username from all_users;
-l
+
 define
 define _editor = "vi"
 column username format a25

@@ -23,11 +23,7 @@ CTRL+ALT+Fx = go to virtual console x
 
 ~~~
 usermod -aG cognos bi     # add bi to cognos group
-<<<<<<< HEAD:tutorials/linux/lfcs/rh119_rhel7.md
 usermod -L bi             # lock user bi
-=======
-usermod -L bi               # lock user bi
->>>>>>> f3426af05092c4021c6f6859c6d8089dba88c855:tutorials/linux/lfcs/rh199_rhel7.md
 ~~~
 
 ### SSH key-based authentication

@@ -18,7 +18,7 @@ systemctl --type=service        # list only service units
 
 systemctl status rngd.service   # check status, or
 systemctl is-active sshd
-shstemctl is-enables sshd
+shstemctl is-enabled sshd
 systemctl list-units --all      # include inactive units
 systemctl --failed --type=service # list failed services
 
