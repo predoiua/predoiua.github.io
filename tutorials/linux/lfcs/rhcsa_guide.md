@@ -227,6 +227,61 @@ For root set to 027, whereas normal users work with the default umask 022.
 
 # RHCE
 
+## 21. Managins SELinux
+
+~~~
+cat /etc/sysconfig/selinux        # set for reboting
+sestatus -v                       # SE Status
+getenforce                        # check if is enforced or not
+setenforce 0                      # disable SE Linux
+ls -Z                             # show context labels
+semanage fcontext -a -t httpd_sys_content_t /var/www/html_1  # set new context for a new root httpd folder
+restorecon -R -v /var/www/html_1                             # apply the policy setting to the file system
+~~~
+
+Context label always have 3 parts:
+1.User: The user can be recognized by _u in the context label; SELinux users are not the same as Linux users
+2. Role: The role can be recognized by _r in the context label.
+3. Type: The type context can be recognized by _t in the context label.
+
+Setting Context Types
+semanage: This is the command you want to use. The semanage command writes the new context to the SELinux policy.
+chcon: This command is for use in specific cases only and normally should be avoided. The chcon command writes the new context to the file system and not to the policy.
+
+exercise
+
+~~~
+yum install -y httpd elinks
+mkdir /web
+vim /web/index.html
+vim /etc/httpd/conf/httpd.conf
+#DocumentRoot "/web"
+#<Directory "/web">
+#	AllowOverride None
+#	Require all granted
+#</Directory>
+
+systemctl restart httpd
+elinks http://localhost    # see original content
+setenforce 0               # SE in permisive mode
+elinks http://localhost    # see new page
+semanage fcontext -a -t httpd_sys_content_t "/web(/.*)?" # change context
+setenforce 1              # still no acees to new html
+restorecon -R -v /web     # -v = verbose. After that it works.
+~~~
+
+~~~
+getsebool -a | grep ftp
+setsebool ftpd_anon_write on
+getsebool ftpd_anon_write              # changes the value in runtime
+semanage boolean -l | grep ftpd_anon
+setsebool -P ftpd_anon_write on        # set runtime and the default setting to on
+
+grep AVC /var/log/audit/audit.log      # check SE audit messages
+~~~
+
+
+
 ## 22. Configuring a Firewall
 
 ###  Foundation Topics
