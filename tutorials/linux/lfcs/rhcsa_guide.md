@@ -6,7 +6,12 @@ categories: linux
 * will be replace by toc
 {:toc}
 
-# RHCSA
+# Red Hat RHCSARHCE 7 Cert Guide- Red Hat Enterprise Linux 7 (EX200 and EX300) (Certification Guide)
+
+Sander van Vugt
+
+## 1. Installing Red Hat Enterprise Linux Server
+
 
 ## 6. User and Group Management
 

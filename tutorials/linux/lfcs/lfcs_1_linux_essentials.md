@@ -94,7 +94,7 @@ ls -a   # all
 ls -lrt # long, reverse order by time
 ls -F   # show file type ( folders end in / )
 cp -R   # recursive
-mkdir -pm777 # full path, m = with mask ( not using umask )
+mkdir -pm777 dir # full path, m = with mask ( not using umask )
 ~~~
 
 ## 4.2 File types
@@ -107,6 +107,9 @@ ls -la /dev/sda   # one of them
 ls -l /dev/sda[12]  # 1 or 2
 ls -l /etc/system-release    # symbolic link
 rpm -qf /usr/bin/lsb_release # which package installed this file 
+yum whatprovides tree        # wht package provide command tree
+repoquery -l tree            # files in package tree
+repoquery -i tree            # info about package tree
 ~~~
 
 
@@ -115,7 +118,7 @@ rpm -qf /usr/bin/lsb_release # which package installed this file
 ~~~
 cp -i /etc/hosts .    # copy in local folder, interativ ( only for overwrite )
 mv                    # move or rename
-rm -i                  # remove interactive
+rm -i                 # remove interactive
 ~~~
 
 ## 4.3 Working with directory
@@ -160,9 +163,9 @@ tail -n 3 /etc/services        # last 3
 ## 5.2 regex and grep
 
 ~~~
-yum list install        # all installed packages
-yum list install   | grep kernel
-yum list install   | grep ^kernel   # line that begin wiht kernel
+yum list installed        # all installed packages
+yum list installed   | grep kernel
+yum list installed   | grep ^kernel   # line that begin wiht kernel
 sudo yum install ntp         # network time protocol
 cat /etc/ntp.conf
 cp !$ .                      # make a copy
@@ -233,9 +236,9 @@ dG = delete to eof
 ~~~
 > file               # create file
 > newfile            # overwrite file content
-df -h > file1        # write command output to file
-df -h 1> file1       # explicitly specify STDOUT (1>)
-df -h 1>> file1      # append
+df -h >file1         # write command output to file
+df -h 1>file1        # explicitly specify STDOUT (1>)
+df -h 1>>file1       # append
 ~~~
 
 ## 7.2 noclobber
@@ -244,8 +247,8 @@ df -h 1>> file1      # append
 set -o                # check shell options
 set -o noclobber      # set noclobber on
 set -o | grep noclobber
-date +%F > file1     # failure to overwrite file1
-date +%F >| file1    # force to overwrite
+date +%F >file1     # failure to overwrite file1
+date +%F >|file1    # force to overwrite
 ~~~
 
 ## 7.3 redirect STDERR
@@ -253,16 +256,16 @@ date +%F >| file1    # force to overwrite
 ~~~
 ls /etcw > err               # error is sent to stdout
 ls /etcw 2>| err             # now we have the error in err file
-find /etc -fype l 2> /dev/null
-find /etc -fype l &> /err.txt  # redirect stdout and std err
+find /etc -fype l 2>/dev/null
+find /etc -fype l &>/err.txt  # redirect stdout and std err
 ~~~
 
 ## 7.3 read STDIN
 
 ~~~
 mail                     # check mail
-df -hlT > diskfree       # human, show type, long
-mail -s "Desk Free" predoiua < disckfree  # send a mail to predoiua. diskfree file as mail content
+df -hlT >diskfree       # human, show type, long
+mail -s "Disk Free" predoiua < disckfree  # send a mail to predoiua. diskfree file as mail content
 ~~~
 
 ## 7.4 HERE documents
