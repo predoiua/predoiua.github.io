@@ -38,9 +38,8 @@ adduser bi
 passwd bi
 groupadd big1
 groupadd big2
-usermod -a -G big1,big2 bi              #add user bi in 2 groupus
-#set default group. in our case no changes
-usermod -g bi bi
+usermod -a -G big1,big2 bi              # add user bi in 2 groupus
+usermod -g bi bi                        # set default group. in our case no changes
 id bi
 su - bi
 

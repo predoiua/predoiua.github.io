@@ -152,14 +152,10 @@ Each of the time-related fields may contain
 ### 1.9.4 Crontab management
 
 ~~~bash
-#set filename as your crontab
-crontab filename
-# list your crontab
-crontab -l
-# edit exisitn crontab
-crontab -e
-# load a new crontab for user bi
-crontab -u bi crontab.new
+crontab filename           # set filename as your crontab
+crontab -l                 # list your crontab
+crontab -e                 # edit existing crontab
+crontab -u bi crontab.new  # load a new crontab for user bi
 ~~~
 
 User how can submit crontabs cron.deny and cron.allow in folder /etc.
@@ -200,10 +196,7 @@ Filename Function
 - rsync: transfer files more securely
 
 ~~~bash
-#to enable edit:
-/etc/xinetd.d/rsync
-# when no ssh, pass is in file
-/etc/rsync.pwd 
-# main configuration file
-/etc/rsyncd.conf
+/etc/xinetd.d/rsync          #to enable edit:
+/etc/rsync.pwd               # when no ssh, pass is in file
+/etc/rsyncd.conf             # main configuration file
 ~~~

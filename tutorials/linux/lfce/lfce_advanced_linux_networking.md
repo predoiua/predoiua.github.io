@@ -33,6 +33,11 @@ nmtui                     # adress: 192.168.1.100/24 + gw: 192.168.1.1
 nmtui                     # adress: 192.168.2.200/24
 ~~~
 
+~~~
+vi /etc/ssh/sshd_config        # enable passwd connect
+vi /etc/hosts                  # add hosts content
+~~~
+
 ## Net topology and OSI
 
 |7 - Application  | App data  | actual app  | Process   = Web Browser
