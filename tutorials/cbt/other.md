@@ -1,6 +1,12 @@
 
 # Design
 
+## Following A Web Design Process
+
+https://www.smashingmagazine.com/2011/06/following-a-web-design-process/
+
+https://www.awwwards.com/
+
 
 # Project
 

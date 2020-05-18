@@ -6,9 +6,9 @@ categories: linux
 * will be replace by toc
 {:toc}
 
-#Ansible up and running
+# Ansible up and running
 
-##1. Introduction
+## 1. Introduction
 
 Do on targer server
 ~~~bash
