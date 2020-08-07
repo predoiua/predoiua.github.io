@@ -75,7 +75,7 @@ virsh net-list     # list net
 virsh              # open a shell . we can run here cmd like net-list.
 net-destroy default  # after that no virt in : ip a
 net-start default    # start it again
-net-autostart --disable default  # disable auto start for default. this create remove link in autostart foldder
+net-autostart --disable default  # disable auto start for default. this create remove link in autostart folder
 ~~~
 
 ### removing default network
@@ -92,7 +92,7 @@ net-undefine default  # destory it. will delete definition file
 virsh net-list --all
 virsh net-define default.xml    # create using definition from default.xml
 virsh net-edit default
-cp default.xml hostonly.xml     # start with a tamplate
+cp default.xml hostonly.xml     # start with a template
 vi hostonly.xml                 # change name, uid, mac, ip, remove nat
 virsh net-define hostonly.xml 
 virsh net-start hostonly 
